@@ -26,5 +26,5 @@ I’m not just about the numbers—I’m about the story behind them. I speciali
 ## **Let’s Connect**  
 Explore my portfolio to see examples of my work!
 
-Visit: ** [My Site on Github](johnurwin.github.io) **
+Visit: **[My Site on Github](johnurwin.github.io)**
 
