@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bucket Problem or Bird Puzzle</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="bucket_styles.css">
+</head>
+<body>
+    <header>
+<a href="https://johnurwin.github.io/" class="mt-8 glow-button">Back to Home Page</a>
+        <h1 id="problem-title">5-Gallon and 3-Gallon Bucket Problem</h1>
+        <p id="problem-description">Your goal is to measure exactly 4 gallons of water using the buckets below. Use the buttons to perform actions step by step.</p>
+        <button id="toggle-problem-btn" onclick="toggleProblem()">Switch to Bird Puzzle</button>
+    </header>
+    <main id="main-content">
+        <div id="bucket-problem">
+            <div class="bucket-container">
+                <div class="bucket-group">
+                    <div class="label">5-Gallon Bucket</div>
+                    <div class="bucket" id="five-gallon">
+                        <div class="water" id="five-gallon-water"></div>
+                    </div>
+                </div>
+                <div class="bucket-group">
+                    <div class="label">3-Gallon Bucket</div>
+                    <div class="bucket" id="three-gallon">
+                        <div class="water" id="three-gallon-water"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="controls">
+                <button onclick="fillBucket('five')">Fill 5-Gallon Bucket</button>
+                <button onclick="fillBucket('three')">Fill 3-Gallon Bucket</button>
+                <button onclick="emptyBucket('five')">Empty 5-Gallon Bucket</button>
+                <button onclick="emptyBucket('three')">Empty 3-Gallon Bucket</button>
+                <button onclick="transferWater()">Transfer Water</button>
+            </div>
+            <p id="status">Start solving the problem!</p>
+            <div id="correct-popup">4 Gallons! Correct!</div>
+        </div>
+
+        <div id="bird-problem" style="display: none;">
+            <h2>Bird Navigation Puzzle</h2>
+            <p>Your bird friend needs to find the correct tree. The bird can move in all four directions. Can you guide it?</p>
+            <div class="bird-container">
+                <div id="bird" class="bird"></div>
+                <div class="tree" id="tree-1">Tree 1</div>
+                <div class="tree" id="tree-2">Tree 2</div>
+                <div class="tree" id="tree-3">Tree 3</div>
+                <div class="tree" id="tree-4">Tree 4</div>
+                <div class="tree" id="tree-5">Tree 5</div>
+            </div>
+            <div class="controls">
+		<button onclick="toggleFlap()">Toggle Flap</button>
+                <button onclick="moveBird('up')">Fly Up</button>
+                <button onclick="moveBird('down')">Fly Down</button>
+                <button onclick="moveBird('left')">Fly Left</button>
+                <button onclick="moveBird('right')">Fly Right</button>
+                <button onclick="getHint()">Get a Hint</button>
+		<button onclick="transformBird()">Transform into Eagle</button>
+            </div>
+            <p id="bird-status">Choose a path for the bird!</p>
+        </div>
+    </main>
+    <audio id="water-splash" src="water-splash.mp3"></audio>
+    <script src="bucket_animation.js"></script>
+</body>
+</html>

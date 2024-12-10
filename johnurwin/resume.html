@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Resume</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        body {
+            background: radial-gradient(circle, #1e293b, #0f172a);
+            color: #fff;
+            font-family: 'Orbitron', sans-serif;
+            overflow-x: hidden;
+        }
+        .glow {
+            text-shadow: 0 0 10px #3b82f6, 0 0 20px #3b82f6;
+        }
+        .timeline {
+            position: relative;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 800px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #3b82f6, #3b82f6 50%, transparent 50%, transparent);
+            background-size: 4px 20px;
+        }
+        .timeline-item {
+            position: relative;
+            margin: 4rem 0;
+            cursor: pointer;
+        }
+        .timeline-item:hover .details {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .timeline-item:nth-child(odd) {
+            text-align: right;
+        }
+        .timeline-item:nth-child(even) {
+            text-align: left;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, #3b82f6, #1e293b);
+            border-radius: 50%;
+            z-index: 10;
+        }
+        .details {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            background: #0f172a;
+            border: 2px solid #3b82f6;
+            padding: 1rem;
+            border-radius: 8px;
+            max-width: 300px;
+            display: inline-block;
+        }
+        .glow-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            color: #fff;
+            border: 2px solid #3b82f6;
+            background: transparent;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-shadow: 0 0 5px #3b82f6;
+        }
+        .glow-button:hover {
+            background: #3b82f6;
+            box-shadow: 0 0 15px #3b82f6;
+        }
+
+.text-2xl {
+    color: #ffdd57; /* Gold for headings */
+    font-size: 1.5em;
+}
+
+.normal {
+    color: #f5f5f5; /* Light Gray for general text */
+}
+
+.finance {
+    font-family: 'Georgia', serif;
+    font-weight: bold;
+    color: #2a9df4; /* Bright Blue for Finance */
+}
+
+.economics {
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    color: #ffa500; /* Orange for Economics */
+}
+
+.math {
+    font-family: 'Verdana', sans-serif;
+    font-style: italic;
+    color: #32cd32; /* Lime Green for Math */
+}
+.tooltip {
+    position: absolute;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(59, 130, 246, 0.9); /* Translucent blue */
+    color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    text-align: center;
+    width: 250px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 10;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.p-4:hover .tooltip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-10px);
+}
+
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="min-h-screen flex flex-col justify-center items-center text-center">
+<a href="https://johnurwin.github.io/" class="mt-8 glow-button">Back to Home Page</a>
+        <h1 class="text-5xl md:text-7xl glow">Interactive Résumé: Work experience, Skills, and Academic Achievements of John Urwin</h1>
+        <p class="text-xl md:text-2xl mt-4">Data Scientist | Business Intelligence Engineer | Innovator</p>
+        <a href="#timeline" class="mt-8 glow-button">Explore Timeline</a>
+    </section>
+
+    <!-- Experience Timeline -->
+    <section id="timeline" class="timeline">
+        <div class="timeline-item">
+            <h2 class="text-xl glow">Amazon - Business Intelligence Engineer</h2>
+            <p class="mt-2">05/2022 - Present</p>
+            <div class="mt-2 details">Innovated a Source of Truth pricing and promotions pipeline, saving 3,000+ hours of query time.<br>Built dashboards saving 4,000+ hours annually and informed $30M in coupon strategy improvements.</div>
+            <a href="#" class="text-blue-400 hover:underline">Click to learn more</a>
+        </div>
+        <div class="timeline-item">
+            <h2 class="text-xl glow">Progressive Insurance - Senior Data Analyst</h2>
+            <p class="mt-2">06/2021 - 05/2022</p>
+            <div class="mt-2 details">Streamlined claims processing, reducing legal costs, and developed SQL triggers for prioritizing claims.<br> Researched litigation claim solutions for proactive resolution.</div>
+            <a href="#" class="text-blue-400 hover:underline">Click to learn more</a>
+        </div>
+        <div class="timeline-item">
+            <h2 class="text-xl glow">Cleveland Clinic - Data Scientist</h2>
+            <p class="mt-2">12/2017 - 06/2021</p>
+            <div class="mt-2 details">Developed a predictive cost model aiding patient care prioritization.<br>Collaborated to create a Rate Realization Model predicting insurance and patient payments.<br> Presented revenue modeling insights at a national healthcare conference.</div>
+            <a href="#" class="text-blue-400 hover:underline">Click to learn more</a>
+        </div>
+        <div class="timeline-item">
+            <h2 class="text-xl glow">Imagine Software - Product Support Analyst</h2>
+            <p class="mt-2">02/2017 - 11/2017</p>
+            <div class="mt-2 details">Analyzed client problems, provided solutions, and explained securities tracking, including swaps and exotic options.</div>
+            <a href="#" class="text-blue-400 hover:underline">Click to learn more</a>
+        </div>
+
+<div class="timeline">
+    <!-- Fall 2016 -->
+    <div class="timeline-item">
+        <h2 class="text-2xl glow">Fall 2016</h2>
+        <div class="mt-2 details">
+            <p class="finance">MSFI 440 - Financial Decisions, Contracting, and Value (Grade: A, Credit Hours: 3)</p>
+            <p class="finance">MSFI 450 - Mergers and Acquisitions (Grade: A, Credit Hours: 3)</p>
+        </div>
+    </div>
+
+    <!-- Summer 2015 -->
+    <div class="timeline-item">
+        <h2 class="text-2xl glow">Summer 2016</h2>
+        <div class="mt-2 details">
+	    <h2 class="text-xl glow">Investment Consulting Internship</h2>
+            <p class="normal"> Created an excel model to customize portfolios, which allows a user to compare a custom portfolio to a cap weighted portfolio and determine savings for key metrics. </p>
+        </div>
+        <div class="mt-2 details">
+            <p class="normal"> Developed a benchmarking study using data from Morningstar Direct to show attribution characteristics and style biases of fund managers relevant to a specific client </p>
+        </div>
+        <div class="mt-2 details">
+            <p class="normal"> Audited equity, bonds and structured products using Bloomberg to verify prices for a client </p>
+	    <p class="normal"> Created two functions with R-Studio to benchmark for Private Equity </p>
+	    <p class="normal"> Quantified monthly returns for style premia using fama-french data from 1926 - 2016 to utilize in Highland’s proprietary stress testing excel model </p>
+        </div>
+    </div>
+
+    <!-- Spring 2016 -->
+    <div class="timeline-item">
+        <h2 class="text-2xl glow">Spring 2016</h2>
+        <div class="mt-2 details">
+            <p class="finance">MSFI 428 - Financial Strategy and Value Creation (Grade: A, Credit Hours: 3)</p>
+            <p class="finance">MSFI 429 - Investment Management (Grade: A, Credit Hours: 3)</p>
+            <p class="finance">MSFI 431 - Fixed Income Markets and Their Derivatives (Grade: C, Credit Hours: 3)</p>
+            <p class="normal">MSFI 436B - Individual Development (Grade: A, Credit Hours: 0.75)</p>
+        </div>
+    </div>
+
+    <!-- Fall 2015 -->
+    <div class="timeline-item">
+        <h2 class="text-2xl glow">Fall 2015</h2>
+        <div class="mt-2 details">
+            <p class="finance">MSFI 430 - Derivatives and Risk Management (Grade: A, Credit Hours: 3)</p>
+            <p class="finance">MSFI 404 - Financial Modeling (Grade: B, Credit Hours: 3)</p>
+            <p class="finance">MSFI 421 - Corporate Financial Analysis (Grade: A, Credit Hours: 3)</p>
+            <p class="finance">MSFI 435 - Empirical Finance (Grade: A, Credit Hours: 3)</p>
+            <p class="normal">MSFI 401 - Financial Orientation (Grade: A, Credit Hours: 1.5)</p>
+            <p class="normal">MSFI 436A - Individual Development (Grade: A, Credit Hours: 0.75)</p>
+        </div>
+    </div>
+</div>
+
+    <!-- Summer 2015 -->
+    <div class="timeline-item">
+        <h2 class="text-2xl glow">Summer 2015</h2>
+        <div class="mt-2 details">
+	    <h2 class="text-xl glow">Anti-Money Laundering Analyst Internship</h2>
+            <p class="normal"> Analyzed customer accounts in order to prepare 350 alert narratives for 3 financial institutions
+in fulfillment of the Bank Secrecy Act's anti-money laundering requirements </p>
+        </div>
+    </div>
+
+<div class="timeline">
+    <!-- Spring 2015 -->
+    <div class="timeline-item">
+        <h2 class="text-2xl glow">Spring 2015</h2>
+        <div class="mt-2 details">
+            <p class="normal">CH 105 - Chemistry in Society (Grade: A, Credit Hours: 3)</p>
+            <p class="normal">CH 105L - Chemistry in Society Lab (Grade: A, Credit Hours: 1)</p>
+            <p class="economics">EC 343 - Economic Development (Grade: A-, Credit Hours: 3)</p>
+            <p class="economics">EC 361 - Urban and Regional Economics (Grade: A-, Credit Hours: 3)</p>
+            <p class="finance">FN 441 - Case Studies in Financial Management (Grade: A, Credit Hours: 3)</p>
+            <p class="math">MT 421 - Probability and Statistics II (Grade: AD, Credit Hours: 3)</p>
+            <p class="math">MT 422 - Applied Statistics (Grade: A-, Credit Hours: 3)</p>
+        </div>
+    </div>
+
+    <!-- Fall 2014 -->
+    <div class="timeline-item">
+        <h2 class="text-2xl glow">Fall 2014</h2>
+        <div class="mt-2 details">
+            <p class="normal">BI 326 - Operations Management (Grade: A, Credit Hours: 3)</p>
+            <p class="economics">EC 311 - Money and Banking (Grade: A, Credit Hours: 3)</p>
+            <p class="economics">EC 321 - Labor and Human Resource Development (Grade: A-, Credit Hours: 3)</p>
+            <p class="finance">FN 316 - Financial Markets and Institutions (Grade: A, Credit Hours: 3)</p>
+            <p class="finance">FN 440 - Intermediate Corporate Finance (Grade: A, Credit Hours: 3)</p>
+            <p class="normal">MN 499 - Strategic Management (Grade: B+, Credit Hours: 3)</p>
+        </div>
+    </div>
+
+    <!-- Summer 2014 -->
+    <div class="timeline-item">
+        <h2 class="text-2xl glow">Summer 2014</h2>
+        <div class="mt-2 details">
+            <p class="normal">MN 461 - Legal Environment of Business (Grade: A-, Credit Hours: 3)</p>
+        </div>
+        <div class="mt-2 details">
+	    <h2 class="text-xl glow">Corporate Tax Department Internship</h2>
+            <p class="normal"> Reconciled interest, dividends, other income, capital gain/loss, depreciable assets, and
+accumulated depreciation variances to prepare for the state tax return process </p>
+            <p class="normal"> Challenged the validity of tax notices and assessments from state departments of revenue to
+avoid additional tax penalties and determined solutions to ensure tax obligations were fulfilled </p>
+            <p class="normal"> Utilized Corptax software to prepare 20 franchise tax returns </p>
+        </div>
+    </div>
+
+    <!-- Spring 2014 -->
+    <div class="timeline-item">
+        <h2 class="text-2xl glow">Spring 2014</h2>
+        <div class="mt-2 details">
+            <p class="normal">CN 199 - Regular Elementary Chinese I (Grade: A, Credit Hours: 4)</p>
+            <p class="economics">EC 405 - China in the World Economy (Grade: B, Credit Hours: 3)</p>
+            <p class="finance">FN ELEC - International Financial Management (Grade: A-, Credit Hours: 3)</p>
+            <p class="normal">HS 180 - Modern Chinese History (Grade: A, Credit Hours: 3)</p>
+            <p class="normal">PL 286 - Chinese Ethics and Asian Values (Grade: A-, Credit Hours: 3)</p>
+            <p class="normal">TRS 253 - Topics in Contemporary Sociology (Grade: A, Credit Hours: 3)</p>
+        </div>
+    </div>
+
+<div class="timeline-item">
+    <h2 class="text-2xl glow">Fall 2013</h2>
+    <div class="mt-2 details">
+        <p class="finance">AC 310 - Accounting for Finance Majors (Grade: A-, Credit Hours: 3)</p>
+        <p class="normal">EN 277 - Major American Writers (Grade: B, Credit Hours: 3)</p>
+        <p class="finance">FN 342 - Investments (Grade: A, Credit Hours: 3)</p>
+        <p class="math">MT 233 - Calculus & Analytic Geometry III (Grade: B, Credit Hours: 4)</p>
+        <p class="math">MT 322 - Applied Regression Analysis (Grade: A-, Credit Hours: 3)</p>
+    </div>
+</div>
+
+<div class="timeline-item">
+    <h2 class="text-2xl glow">Spring 2013</h2>
+    <div class="mt-2 details">
+        <p class="finance">AC 202 - Accounting Principles II (Grade: A-, Credit Hours: 3)</p>
+        <p class="economics">EC 301 - Microeconomics (Grade: A, Credit Hours: 3)</p>
+        <p class="finance">FN 312 - Business Finance (Grade: A, Credit Hours: 3)</p>
+        <p class="normal">MK 301 - Marketing Principles (Grade: A-, Credit Hours: 3)</p>
+        <p class="normal">MN 202 - Business Communications (Grade: A, Credit Hours: 3)</p>
+        <p class="normal">SC 101 - Introductory Sociology (Grade: A, Credit Hours: 3)</p>
+    </div>
+</div>
+
+<div class="timeline-item">
+    <h2 class="text-2xl glow">Fall 2012</h2>
+    <div class="mt-2 details">
+        <p class="finance">AC 201 - Accounting Principles I (Grade: A-, Credit Hours: 3)</p>
+        <p class="normal">BI 200 - Management Information Systems (Grade: A, Credit Hours: 3)</p>
+        <p class="normal">CS 125 - Introduction to Web Design and Image Processing (Grade: A, Credit Hours: 3)</p>
+        <p class="math">EC 208 - Business and Economic Statistics (Grade: A, Credit Hours: 3)</p>
+        <p class="normal">PL 311 - Business Ethics (Grade: A, Credit Hours: 3)</p>
+        <p class="normal">RL 101 - Introduction to Theology and Religious Studies (Grade: A, Credit Hours: 3)</p>
+    </div>
+</div>
+
+<div class="timeline-item">
+    <h2 class="text-2xl glow">Spring 2012</h2>
+    <div class="mt-2 details">
+        <p class="normal">BI 107 - Spreadsheet Applications (Grade: A, Credit Hours: 1)</p>
+        <p class="normal">BI 108 - Database Applications (Grade: A, Credit Hours: 1)</p>
+        <p class="normal">BI 109 - Communications Applications (Grade: A, Credit Hours: 1)</p>
+        <p class="economics">EC 202 - Principles of Economics II (Grade: A, Credit Hours: 3)</p>
+        <p class="normal">EN 112 - Composition and Rhetoric II (Grade: A-, Credit Hours: 3)</p>
+        <p class="math">MT 167 - Mathematics of Change and Chance (Grade: A, Credit Hours: 3)</p>
+        <p class="normal">PL 101 - Introduction to Philosophy (Honors) (Grade: A, Credit Hours: 3)</p>
+        <p class="normal">SP 202 - Intermediate Spanish II (Grade: A-, Credit Hours: 3)</p>
+    </div>
+</div>
+
+<div class="timeline-item">
+    <h2 class="text-2xl glow">Fall 2011</h2>
+    <div class="mt-2 details">
+        <p class="normal">AR 120 - Purpose and Place: Exploring Campus, Community, and Self (Grade: A, Credit Hours: 1)</p>
+        <p class="normal">CE 101 - Introduction to Careers (Grade: A, Credit Hours: 1)</p>
+        <p class="normal">CO 100 - Speech Communication (Grade: A, Credit Hours: 2)</p>
+        <p class="economics">EC 201 - Principles of Economics I (Grade: A, Credit Hours: 3)</p>
+        <p class="normal">EN 111 - Composition and Rhetoric I (Grade: A, Credit Hours: 3)</p>
+        <p class="normal">FY SEM - First Year Seminar (Grade: A, Credit Hours: 3)</p>
+        <p class="normal">SP 201 - Intermediate Spanish I (Grade: A-, Credit Hours: 3)</p>
+    </div>
+</div>
+
+    </section>
+
+    <!-- Skills Section -->
+    <section class="mt-12 text-center">
+        <h2 class="text-3xl glow">Skills & Certifications</h2>
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8 px-8">
+            <div class="p-4 border border-blue-500 rounded-md hover:shadow-lg">
+                <h3 class="text-xl glow">SAS Certified Data Scientist</h3>
+                <p class="mt-2">Certified in Predictive Modeling, Advanced Analytics, and Big Data techniques.</p>
+            </div>
+<a href="https://www.datacamp.com/portfolio/jurwin15" target="_blank" rel="noopener noreferrer">
+    <div class="p-4 border border-blue-500 rounded-md hover:shadow-lg relative">
+        <h3 class="text-xl glow">DataCamp Career Tracks</h3>
+        <p class="mt-2">Completed 159 courses and 9,000 exercises in Python, R, and machine learning.</p>
+        <div class="tooltip">
+            Click here to be taken to John Urwin's DataCamp portfolio to see a list of courses completed
+        </div>
+    </div>
+</a>
+            <div class="p-4 border border-blue-500 rounded-md hover:shadow-lg">
+                <h3 class="text-xl glow">Machine Learning Expertise</h3>
+                <p class="mt-2">Experienced in building ARIMA, decision tree, and neural network models.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-6 text-center">
+        <p class="text-sm">&copy; 2024 John Urwin | All Rights Reserved</p>
+    </footer>
+
+
+    <script>
+        gsap.from(".glow", { opacity: 0, y: 20, duration: 1, stagger: 0.3 });
+        gsap.from(".timeline-item", {
+            scrollTrigger: {
+                trigger: ".timeline-item",
+                start: "top 80%",
+                toggleActions: "play none none none"
+            },
+            opacity: 0,
+            x: function(index, target) {
+                return target.classList.contains('even') ? 100 : -100;
+            },
+            duration: 1,
+            stagger: 0.3
+        });
+    </script>
+</body>
+</html>

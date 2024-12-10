@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="johnurwin/johnurwin.css">
 </head>
 <body>
+    <div id="particles-js"></div>
+
     <!-- Navigation Bar -->
     <header>
         <nav>
@@ -21,50 +23,85 @@
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div id="particles-js"></div>
-        <div class="container">
-            <h1>
-                <span class="typewriter">Hi, I'm <span class="highlight">John Urwin</span></span>
-            </h1>
-            <p class="tagline">9 Years of Expertise in Data Science, Engineering, and Business Intelligence</p>
-            <div class="buttons">
-                <a href="#portfolio" class="cta-button">Explore My Work</a>
-                <a href="#contact" class="secondary-button">Contact Me</a>
-            </div>
+    <section id="home" class="container">
+        <h1>
+            <span class="typewriter">Hi, I'm <span class="highlight">John Urwin</span></span>
+        </h1>
+        <p class="tagline">9 Years of Expertise in Data Science, Engineering, and Business Intelligence</p>
+        <div class="buttons">
+            <a href="#portfolio" class="cta-button">Explore My Work</a>
+            <a href="#contact" class="secondary-button">Contact Me</a>
+        </div>
+        <div class="buttons">
+	    <a href="#portfolio" class="secondary-button">Explore My Work</a>
+	    <a href="johnurwin/resume.html" class="cta-button">See My Interactive Résumé</a>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about">
+    <section id="about" class="container">
         <h2>About Me</h2>
-        <p>Welcome to my portfolio! I’m passionate about transforming data into actionable insights. With over eight years of experience, I specialize in data science, analytics, and storytelling.</p>
+        <p>I’m passionate about transforming data into actionable insights. Over the last nine years, I’ve worked in data science, business intelligence, and software engineering. I’ve led projects ranging from predictive healthcare models to marketing analytics optimization.</p>
     </section>
 
     <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio">
+
+    <section id="portfolio" class="container">
+    <div class="portfolio-nav">
+        <button onclick="scrollToProject('project-1')">Project 1</button>
+        <button onclick="scrollToProject('project-2')">Project 2</button>
+        <button onclick="scrollToProject('project-3')">Project 3</button>
+	<button onclick="scrollToProject('project-4')">Project 4</button>
+    </div>
         <h2>Portfolio</h2>
-        <p>Explore some of my best projects below: (Coming Soon)</p>
-        <!-- Add portfolio items here -->
+        <div class="portfolio-items">
+            <div id="project-1" class="portfolio-item">
+                <a href="https://mymomspictures.com/Moms_Website/Webpages/computerscience.html" target="Computer Science Projects">
+                    <img src="Photos/bird_photography_website.jpg" alt="Bird Photography Website Project">
+                </a>
+                <p>Project 1: Bird Photography Website with 70+ interconnected Webpages Hosted on AWS</p>
+            </div>
+            <div id="project-2" class="portfolio-item">
+                <a href="johnurwin/visualizingintervewquestions.html" target="Interview Questions">
+                    <img src="Photos/bucket_problem.jpg" alt="Visualizing Interview Questions Project">
+                </a>
+                <p>Project 2: Visualizing Interview Questions</p>
+            </div>
+            <div id="project-3" class="portfolio-item">
+                <a href="Photos/photo1.jpg" target="_blank">
+                    <img src="Photos/photo1.jpg" alt="Project 3">
+                </a>
+                <p>Project 3: Healthcare Predictive Model</p>
+            </div>
+            <div id="project-4" class="portfolio-item">
+                <a href="Photos/photo2.jpg" target="_blank">
+                    <img src="Photos/photo2.jpg" alt="Project 4">
+                </a>
+                <p>Project 4: TBD</p>
+            </div>
+        </div>
     </section>
 
     <!-- Blog Section -->
-    <section id="blog" class="blog">
+    <section id="blog" class="container">
         <h2>Blog</h2>
-        <p>Read my latest thoughts on data science, analytics, and more! (Coming Soon)</p>
-        <!-- Add blog posts here -->
+        <p>Read my latest thoughts on data science, analytics, and more!</p>
+        <ul>
+            <li><a href="blogs/latest-blog.html" target="_blank">How Data Engineering Shapes Analytics Success</a></li>
+        </ul>
     </section>
 
     <!-- Contact Section -->
-<section id="contact" class="contact">
-    <h2>Contact Me</h2>
-    <p>I'd love to hear from you! Connect with me on LinkedIn:</p>
-    <a href="https://www.linkedin.com/in/johnturwin/" target="_blank" class="cta-button">Visit My LinkedIn</a>
-</section>
+    <section id="contact" class="container">
+        <h2>Contact Me</h2>
+        <p>I'd love to hear from you! Connect with me on LinkedIn:</p>
+        <a href="https://www.linkedin.com/in/johnturwin/" target="_blank" class="cta-button">Visit My LinkedIn</a>
+    </section>
 
     <footer>
-        <p>&copy; 2024 [Your Name]. All rights reserved.</p>
+        <p>&copy; 2024 John Urwin. All rights reserved.</p>
     </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
     <script src="johnurwin/johnurwin.js"></script>
 </body>
