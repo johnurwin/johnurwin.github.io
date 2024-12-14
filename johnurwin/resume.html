@@ -21,6 +21,7 @@
             padding: 2rem;
             margin: 2rem auto;
             max-width: 800px;
+            overflow: visible;
         }
         .timeline::before {
             content: '';
@@ -102,7 +103,6 @@
             transform: translateX(-50%);
             background: rgba(59, 130, 246, 0.9);
             color: #fff;
-            padding: 5px 10px;
             border-radius: 5px;
             font-size: 0.875rem;
             text-align: center;
@@ -116,114 +116,88 @@
             opacity: 1;
             transform: translateX(-50%) translateY(0);
         }
-        .details {
-            opacity: 0;
-            transform: scale(0.8);
-            transition: opacity 0.4s ease, transform 0.4s ease;
-            background: #0f172a;
-            border: 2px solid #3b82f6;
-            padding: 1rem;
-            border-radius: 8px;
-            max-width: 300px;
+        .timeline-point.circle {
+            border-radius: 50%;
+        }
+        .timeline-point.square {
+            border-radius: 0;
+        }
+        .timeline-point.octagon {
+            clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+        }
+        .legend {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+            gap: 2rem;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .legend-shape {
+            width: 20px;
+            height: 20px;
             display: inline-block;
         }
-        .glow-button {
-            display: inline-block;
-            padding: 10px 20px;
-            font-size: 1.2rem;
-            color: #fff;
-            border: 2px solid #3b82f6;
-            background: transparent;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            text-shadow: 0 0 5px #3b82f6;
+        .legend-shape.circle {
+            border-radius: 50%;
         }
-        .glow-button:hover {
-            background: #3b82f6;
-            box-shadow: 0 0 15px #3b82f6;
+        .legend-shape.square {
+            border-radius: 0;
+        }
+        .legend-shape.octagon {
+            clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
         }
 
-.text-2xl {
-    color: #ffdd57; /* Gold for headings */
-    font-size: 1.5em;
-}
+    .timeline-point[data-category="python"] {
+        background-color: #2563eb; /* Solid Blue for Python */
+        border: 2px solid #2563eb;
+    }
+    .timeline-point[data-category="r"] {
+        background-color: #10b981; /* Solid Green for R */
+        border: 2px solid #10b981;
+    }
+    .timeline-point[data-category="sql"] {
+        background-color: #f97316; /* Solid Orange for SQL */
+        border: 2px solid #f97316;
+    }
+    .timeline-point[data-category="sas"] {
+        background-color: #9333ea; /* Solid Purple for SAS */
+        border: 2px solid #9333ea;
+    }
+    .timeline-point[data-category="other"] {
+        background-color: #9ca3af; /* Solid Gray for Other */
+        border: 2px solid #9ca3af;
+    }
 
-.normal {
-    color: #f5f5f5; /* Light Gray for general text */
-}
-
-.finance {
-    font-family: 'Georgia', serif;
-    font-weight: bold;
-    color: #2a9df4; /* Bright Blue for Finance */
-}
-
-.economics {
-    font-family: 'Courier New', monospace;
-    font-weight: bold;
-    color: #ffa500; /* Orange for Economics */
-}
-
-.math {
-    font-family: 'Verdana', sans-serif;
-    font-style: italic;
-    color: #32cd32; /* Lime Green for Math */
-}
-.tooltip {
-    position: absolute;
-    bottom: -60px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(59, 130, 246, 0.9); /* Translucent blue */
-    color: #fff;
-    padding: 10px;
-    border-radius: 8px;
-    font-size: 0.875rem;
-    text-align: center;
-    width: 250px;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    z-index: 10;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-}
-
-.p-4:hover .tooltip {
-    opacity: 1;
-    transform: translateX(-50%) translateY(-10px);
-}
 
     </style>
 </head>
 <body>
-    <!-- Hero Section -->
     <section class="min-h-screen flex flex-col justify-center items-center text-center">
-<a href="https://johnurwin.github.io/" class="mt-8 glow-button">Back to Home Page</a>
-        <h1 class="text-5xl md:text-7xl glow">Interactive Résumé: Work experience, Skills, and Academic Achievements of John Urwin</h1>
-        <p class="text-xl md:text-2xl mt-4">Data Scientist | Business Intelligence Engineer | Innovator</p>
-        <a href="#timeline" class="mt-8 glow-button">Explore Timeline</a>
+	<div class="timeline-point"> <a href="https://johnurwin.github.io/" class="mt-8 glow-button">Back to Home Page</a> </div>
+        <h1 class="text-5xl md:text-7xl glow">Interactive Résumé: Work experience, Skills, and Education of John Urwin</h1>
+        <p class="text-xl md:text-2xl mt-4">Data Scientist | Business Intelligence Engineer</p>
+        <a href="#experience" class="mt-8 glow-button">Explore Experience</a>
     </section>
 
-    <!-- Experience Timeline -->
     <!-- Experience Section -->
-    <section id="experience" class="px-4">
+    <section id="experience" class="timeline">
         <h2 class="text-3xl glow text-center">Work Experience</h2>
-    </section>
+
         <!-- Amazon Timeline -->
-    <section id="timeline" class="timeline">
         <div class="timeline-item">
-            <h2 class="text-xl glow">Amazon - Business Intelligence Engineer (05/2022 - Present)</h2>
+            <h3 class="text-xl glow">Amazon - Business Intelligence Engineer (05/2022 - Present)</h3>
             <div class="horizontal-timeline">
                 <div class="timeline-point" data-tooltip="Automated processes reducing query times by 80%.">Implemented automation reducing query times by 80%.</div>
                 <div class="timeline-point" data-tooltip="Created dashboards that informed $30M in strategies.">Developed dashboards informing $30M strategy.</div>
                 <div class="timeline-point" data-tooltip="Optimized pipelines saving 4,000+ hours annually.">Saved 4,000+ hours annually via optimized pipelines.</div>
-		<div class="timeline-point"> Innovated a Source of Truth pricing and promotions pipeline, saving 3,000+ hours of query time.<br>Built dashboards saving 4,000+ hours annually 			and informed $30M in coupon strategy improvements. </div>
             </div>
-            <a href="#" class="text-blue-400 hover:underline">Click to learn more</a>
         </div>
 
         <!-- Progressive Insurance Timeline -->
-
         <div class="timeline-item">
             <h3 class="text-xl glow">Progressive Insurance - Senior Data Analyst (06/2021 - 05/2022)</h3>
             <div class="horizontal-timeline">
@@ -251,200 +225,11 @@
                 <div class="timeline-point" data-tooltip="Provided expertise on complex financial instruments.">Provided expert guidance on swaps and options.</div>
             </div>
         </div>
-	</section>
-
-    <!-- Experience Section -->
-    <section id="education" class="px-4">
-        <h2 class="text-3xl glow text-center">Education</h2>
-    </section>
-
-<section id="timeline" class="timeline">
-<div class="timeline">
-    <!-- Fall 2016 -->
-    <div class="timeline-item">
-        <h2 class="text-2xl glow">Fall 2016</h2>
-        <div class="mt-2 details">
-            <p class="finance">MSFI 440 - Financial Decisions, Contracting, and Value (Grade: A, Credit Hours: 3)</p>
-            <p class="finance">MSFI 450 - Mergers and Acquisitions (Grade: A, Credit Hours: 3)</p>
-        </div>
-    </div>
-
-    <!-- Summer 2015 -->
-    <div class="timeline-item">
-        <h2 class="text-2xl glow">Summer 2016</h2>
-        <div class="mt-2 details">
-	    <h2 class="text-xl glow">Investment Consulting Internship</h2>
-            <p class="normal"> Created an excel model to customize portfolios, which allows a user to compare a custom portfolio to a cap weighted portfolio and determine savings for key metrics. </p>
-        </div>
-        <div class="mt-2 details">
-            <p class="normal"> Developed a benchmarking study using data from Morningstar Direct to show attribution characteristics and style biases of fund managers relevant to a specific client </p>
-        </div>
-        <div class="mt-2 details">
-            <p class="normal"> Audited equity, bonds and structured products using Bloomberg to verify prices for a client </p>
-	    <p class="normal"> Created two functions with R-Studio to benchmark for Private Equity </p>
-	    <p class="normal"> Quantified monthly returns for style premia using fama-french data from 1926 - 2016 to utilize in Highland’s proprietary stress testing excel model </p>
-        </div>
-    </div>
-
-    <!-- Spring 2016 -->
-    <div class="timeline-item">
-        <h2 class="text-2xl glow">Spring 2016</h2>
-        <div class="mt-2 details">
-            <p class="finance">MSFI 428 - Financial Strategy and Value Creation (Grade: A, Credit Hours: 3)</p>
-            <p class="finance">MSFI 429 - Investment Management (Grade: A, Credit Hours: 3)</p>
-            <p class="finance">MSFI 431 - Fixed Income Markets and Their Derivatives (Grade: C, Credit Hours: 3)</p>
-            <p class="normal">MSFI 436B - Individual Development (Grade: A, Credit Hours: 0.75)</p>
-        </div>
-    </div>
-
-    <!-- Fall 2015 -->
-    <div class="timeline-item">
-        <h2 class="text-2xl glow">Fall 2015</h2>
-        <div class="mt-2 details">
-            <p class="finance">MSFI 430 - Derivatives and Risk Management (Grade: A, Credit Hours: 3)</p>
-            <p class="finance">MSFI 404 - Financial Modeling (Grade: B, Credit Hours: 3)</p>
-            <p class="finance">MSFI 421 - Corporate Financial Analysis (Grade: A, Credit Hours: 3)</p>
-            <p class="finance">MSFI 435 - Empirical Finance (Grade: A, Credit Hours: 3)</p>
-            <p class="normal">MSFI 401 - Financial Orientation (Grade: A, Credit Hours: 1.5)</p>
-            <p class="normal">MSFI 436A - Individual Development (Grade: A, Credit Hours: 0.75)</p>
-        </div>
-    </div>
-</div>
-
-    <!-- Summer 2015 -->
-    <div class="timeline-item">
-        <h2 class="text-2xl glow">Summer 2015</h2>
-        <div class="mt-2 details">
-	    <h2 class="text-xl glow">Anti-Money Laundering Analyst Internship</h2>
-            <p class="normal"> Analyzed customer accounts in order to prepare 350 alert narratives for 3 financial institutions
-in fulfillment of the Bank Secrecy Act's anti-money laundering requirements </p>
-        </div>
-    </div>
-
-<div class="timeline">
-    <!-- Spring 2015 -->
-    <div class="timeline-item">
-        <h2 class="text-2xl glow">Spring 2015</h2>
-        <div class="mt-2 details">
-            <p class="normal">CH 105 - Chemistry in Society (Grade: A, Credit Hours: 3)</p>
-            <p class="normal">CH 105L - Chemistry in Society Lab (Grade: A, Credit Hours: 1)</p>
-            <p class="economics">EC 343 - Economic Development (Grade: A-, Credit Hours: 3)</p>
-            <p class="economics">EC 361 - Urban and Regional Economics (Grade: A-, Credit Hours: 3)</p>
-            <p class="finance">FN 441 - Case Studies in Financial Management (Grade: A, Credit Hours: 3)</p>
-            <p class="math">MT 421 - Probability and Statistics II (Grade: AD, Credit Hours: 3)</p>
-            <p class="math">MT 422 - Applied Statistics (Grade: A-, Credit Hours: 3)</p>
-        </div>
-    </div>
-
-    <!-- Fall 2014 -->
-    <div class="timeline-item">
-        <h2 class="text-2xl glow">Fall 2014</h2>
-        <div class="mt-2 details">
-            <p class="normal">BI 326 - Operations Management (Grade: A, Credit Hours: 3)</p>
-            <p class="economics">EC 311 - Money and Banking (Grade: A, Credit Hours: 3)</p>
-            <p class="economics">EC 321 - Labor and Human Resource Development (Grade: A-, Credit Hours: 3)</p>
-            <p class="finance">FN 316 - Financial Markets and Institutions (Grade: A, Credit Hours: 3)</p>
-            <p class="finance">FN 440 - Intermediate Corporate Finance (Grade: A, Credit Hours: 3)</p>
-            <p class="normal">MN 499 - Strategic Management (Grade: B+, Credit Hours: 3)</p>
-        </div>
-    </div>
-
-    <!-- Summer 2014 -->
-    <div class="timeline-item">
-        <h2 class="text-2xl glow">Summer 2014</h2>
-        <div class="mt-2 details">
-            <p class="normal">MN 461 - Legal Environment of Business (Grade: A-, Credit Hours: 3)</p>
-        </div>
-        <div class="mt-2 details">
-	    <h2 class="text-xl glow">Corporate Tax Department Internship</h2>
-            <p class="normal"> Reconciled interest, dividends, other income, capital gain/loss, depreciable assets, and
-accumulated depreciation variances to prepare for the state tax return process </p>
-            <p class="normal"> Challenged the validity of tax notices and assessments from state departments of revenue to
-avoid additional tax penalties and determined solutions to ensure tax obligations were fulfilled </p>
-            <p class="normal"> Utilized Corptax software to prepare 20 franchise tax returns </p>
-        </div>
-    </div>
-
-    <!-- Spring 2014 -->
-    <div class="timeline-item">
-        <h2 class="text-2xl glow">Spring 2014</h2>
-        <div class="mt-2 details">
-            <p class="normal">CN 199 - Regular Elementary Chinese I (Grade: A, Credit Hours: 4)</p>
-            <p class="economics">EC 405 - China in the World Economy (Grade: B, Credit Hours: 3)</p>
-            <p class="finance">FN ELEC - International Financial Management (Grade: A-, Credit Hours: 3)</p>
-            <p class="normal">HS 180 - Modern Chinese History (Grade: A, Credit Hours: 3)</p>
-            <p class="normal">PL 286 - Chinese Ethics and Asian Values (Grade: A-, Credit Hours: 3)</p>
-            <p class="normal">TRS 253 - Topics in Contemporary Sociology (Grade: A, Credit Hours: 3)</p>
-        </div>
-    </div>
-
-<div class="timeline-item">
-    <h2 class="text-2xl glow">Fall 2013</h2>
-    <div class="mt-2 details">
-        <p class="finance">AC 310 - Accounting for Finance Majors (Grade: A-, Credit Hours: 3)</p>
-        <p class="normal">EN 277 - Major American Writers (Grade: B, Credit Hours: 3)</p>
-        <p class="finance">FN 342 - Investments (Grade: A, Credit Hours: 3)</p>
-        <p class="math">MT 233 - Calculus & Analytic Geometry III (Grade: B, Credit Hours: 4)</p>
-        <p class="math">MT 322 - Applied Regression Analysis (Grade: A-, Credit Hours: 3)</p>
-    </div>
-</div>
-
-<div class="timeline-item">
-    <h2 class="text-2xl glow">Spring 2013</h2>
-    <div class="mt-2 details">
-        <p class="finance">AC 202 - Accounting Principles II (Grade: A-, Credit Hours: 3)</p>
-        <p class="economics">EC 301 - Microeconomics (Grade: A, Credit Hours: 3)</p>
-        <p class="finance">FN 312 - Business Finance (Grade: A, Credit Hours: 3)</p>
-        <p class="normal">MK 301 - Marketing Principles (Grade: A-, Credit Hours: 3)</p>
-        <p class="normal">MN 202 - Business Communications (Grade: A, Credit Hours: 3)</p>
-        <p class="normal">SC 101 - Introductory Sociology (Grade: A, Credit Hours: 3)</p>
-    </div>
-</div>
-
-<div class="timeline-item">
-    <h2 class="text-2xl glow">Fall 2012</h2>
-    <div class="mt-2 details">
-        <p class="finance">AC 201 - Accounting Principles I (Grade: A-, Credit Hours: 3)</p>
-        <p class="normal">BI 200 - Management Information Systems (Grade: A, Credit Hours: 3)</p>
-        <p class="normal">CS 125 - Introduction to Web Design and Image Processing (Grade: A, Credit Hours: 3)</p>
-        <p class="math">EC 208 - Business and Economic Statistics (Grade: A, Credit Hours: 3)</p>
-        <p class="normal">PL 311 - Business Ethics (Grade: A, Credit Hours: 3)</p>
-        <p class="normal">RL 101 - Introduction to Theology and Religious Studies (Grade: A, Credit Hours: 3)</p>
-    </div>
-</div>
-
-<div class="timeline-item">
-    <h2 class="text-2xl glow">Spring 2012</h2>
-    <div class="mt-2 details">
-        <p class="normal">BI 107 - Spreadsheet Applications (Grade: A, Credit Hours: 1)</p>
-        <p class="normal">BI 108 - Database Applications (Grade: A, Credit Hours: 1)</p>
-        <p class="normal">BI 109 - Communications Applications (Grade: A, Credit Hours: 1)</p>
-        <p class="economics">EC 202 - Principles of Economics II (Grade: A, Credit Hours: 3)</p>
-        <p class="normal">EN 112 - Composition and Rhetoric II (Grade: A-, Credit Hours: 3)</p>
-        <p class="math">MT 167 - Mathematics of Change and Chance (Grade: A, Credit Hours: 3)</p>
-        <p class="normal">PL 101 - Introduction to Philosophy (Honors) (Grade: A, Credit Hours: 3)</p>
-        <p class="normal">SP 202 - Intermediate Spanish II (Grade: A-, Credit Hours: 3)</p>
-    </div>
-</div>
-
-<div class="timeline-item">
-    <h2 class="text-2xl glow">Fall 2011</h2>
-    <div class="mt-2 details">
-        <p class="normal">AR 120 - Purpose and Place: Exploring Campus, Community, and Self (Grade: A, Credit Hours: 1)</p>
-        <p class="normal">CE 101 - Introduction to Careers (Grade: A, Credit Hours: 1)</p>
-        <p class="normal">CO 100 - Speech Communication (Grade: A, Credit Hours: 2)</p>
-        <p class="economics">EC 201 - Principles of Economics I (Grade: A, Credit Hours: 3)</p>
-        <p class="normal">EN 111 - Composition and Rhetoric I (Grade: A, Credit Hours: 3)</p>
-        <p class="normal">FY SEM - First Year Seminar (Grade: A, Credit Hours: 3)</p>
-        <p class="normal">SP 201 - Intermediate Spanish I (Grade: A-, Credit Hours: 3)</p>
-    </div>
-</div>
-
     </section>
 
     <!-- Skills Section -->
     <section class="mt-12 text-center">
-        <h2 class="text-3xl glow">Skills & Certifications</h2>
+        <a href="#online-courses"> <h2 class="text-3xl glow">Skills & Certifications</h2></a>
         <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8 px-8">
             <div class="p-4 border border-blue-500 rounded-md hover:shadow-lg">
                 <h3 class="text-xl glow">SAS Certified Data Scientist</h3>
@@ -466,26 +251,371 @@ avoid additional tax penalties and determined solutions to ensure tax obligation
         </div>
     </section>
 
+
+
+   <section id="education" class="timeline">
+    <h1 class="text-3xl glow text-center">Education</h1>
+    <h2 class="text-3xl glow text-center">Master of Science in Management: Finance</h2>
+    <h3 style="text-align: center;">30 Graduate Credit Hours</h3>
+
+<div class="timeline-item">
+    <h3 class="text-xl glow">Case Western Reserve University - Fall 2016</h3>
+    <div class="horizontal-timeline">
+        <div class="timeline-point">MSFI 440 - Financial Decisions, Contracting, and Value</div>
+        <div class="timeline-point">MSFI 450 - Mergers and Acquisitions</div>
+    </div>
+</div>
+
+<div class="timeline-item">
+    <h3 class="text-xl glow">Case Western Reserve University - Spring 2016</h3>
+    <div class="horizontal-timeline">
+        <div class="timeline-point">MSFI 428 - Financial Strategy and Value Creation</div>
+        <div class="timeline-point">MSFI 429 - Investment Management</div>
+        <div class="timeline-point">MSFI 431 - Fixed Income Markets and Their Derivatives</div>
+        <div class="timeline-point">MSFI 436B - Individual Development</div>
+    </div>
+</div>
+
+<div class="timeline-item">
+    <h3 class="text-xl glow">Case Western Reserve University - Fall 2015</h3>
+    <div class="horizontal-timeline">
+        <div class="timeline-point">MSFI 430 - Derivatives and Risk Management</div>
+        <div class="timeline-point">MSFI 404 - Financial Modeling</div>
+        <div class="timeline-point">MSFI 421 - Corporate Financial Analysis</div>
+        <div class="timeline-point">MSFI 435 - Empirical Finance</div>
+        <div class="timeline-point">MSFI 401 - Financial Orientation</div>
+        <div class="timeline-point">MSFI 436A - Individual Development</div>
+    </div>
+</div>
+
+<h2 class="text-3xl glow text-center">Bachelors of Science in Business Administration: Economics and Finance</h2>
+<h3 style="text-align: center;">170 Undergraduate Credit Hours</h3>
+<div class="timeline-item">
+    <h3 class="text-xl glow">John Carroll University - Spring 2015</h3>
+    <div class="horizontal-timeline">
+        <div class="timeline-point" data-tooltip="Grade: A, 3 Credits">CH 105 - Chemistry in Society</div>
+        <div class="timeline-point" data-tooltip="Grade: A, 1 Credit">CH 105L - Chemistry in Society Lab</div>
+        <div class="timeline-point" data-tooltip="Grade: A-, 3 Credits">EC 343 - Economic Development</div>
+        <div class="timeline-point" data-tooltip="Grade: A-, 3 Credits">EC 361 - Urban and Regional Economics</div>
+        <div class="timeline-point" data-tooltip="Grade: A, 3 Credits">FN 441 - Case Studies in Financial Management</div>
+        <div class="timeline-point" data-tooltip="Grade: Audit">MT 421 - Probability and Statistics II</div>
+        <div class="timeline-point" data-tooltip="Grade: A-, 3 Credits">MT 422 - Applied Statistics</div>
+    </div>
+</div>
+
+    <div class="timeline-item">
+        <h3 class="text-xl glow">John Carroll University - Fall 2015</h3>
+    <div class="horizontal-timeline">
+        <div class="timeline-point" data-tooltip="Grade: A, 3 Credits">BI 326 - Operations Management</div>
+        <div class="timeline-point" data-tooltip="Grade: A, 3 Credits">EC 311 - Money and Banking</div>
+        <div class="timeline-point" data-tooltip="Grade: A-, 3 Credits">EC 321 - Labor and Human Resource Development</div>
+        <div class="timeline-point" data-tooltip="Grade: A, 3 Credits">FN 316 - Financial Markets and Institutions</div>
+        <div class="timeline-point" data-tooltip="Grade: A, 3 Credits">FN 440 - Intermediate Corporate Finance</div>
+        <div class="timeline-point" data-tooltip="Grade: B+, 3 Credits">MN 499 - Strategic Management</div>
+    </div>
+    </div>
+
+<div class="timeline-item">
+    <h3 class="text-xl glow">John Carroll University - Summer 2014</h3>
+    <div class="horizontal-timeline">
+        <div class="timeline-point" data-tooltip="Grade: A-, 3 Credits">MN 461 - Legal Environment of Business</div>
+    </div>
+</div>
+
+    <div class="timeline-item">
+        <h3 class="text-xl glow">Beijing, China - Spring 2014</h3>
+        <div class="horizontal-timeline">
+            <div class="timeline-point" data-tooltip="Grade: A, 4 Credits">CN 199 - Regular Elementary Chinese I</div>
+            <div class="timeline-point" data-tooltip="Grade: B, 3 Credits">EC 405 - China in the World Economy</div>
+            <div class="timeline-point" data-tooltip="Grade: A-, 3 Credits">FN ELEC - International Financial Management</div>
+            <div class="timeline-point" data-tooltip="Grade: A, 3 Credits">HS 180 - Modern Chinese History</div>
+            <div class="timeline-point" data-tooltip="Grade: A-, 3 Credits">PL 286 - Chinese Ethics and Asian Values</div>
+            <div class="timeline-point" data-tooltip="Grade: A, 3 Credits">TRS 253 - Topics in Contemporary Sociology</div>
+        </div>
+    </div>
+
+
+    <div class="timeline-item">
+        <h3 class="text-xl glow">John Carroll University - Fall 2013</h3>
+        <div class="horizontal-timeline">
+            <div class="timeline-point" data-tooltip="Grade: A-, 3 Credits">AC 310 - Accounting for Finance Majors</div>
+            <div class="timeline-point" data-tooltip="Grade: B, 3 Credits">EN 277 - Major American Writers</div>
+            <div class="timeline-point" data-tooltip="Grade: A, 3 Credits">FN 342 - Investments</div>
+            <div class="timeline-point" data-tooltip="Grade: B, 4 Credits">MT 233 - Calculus & Analytic Geometry III</div>
+            <div class="timeline-point" data-tooltip="Grade: A-, 3 Credits">MT 322 - Applied Regression Analysis</div>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <h3 class="text-xl glow">Cleveland State University - Summer 2013</h3>
+        <div class="horizontal-timeline">
+            <div class="timeline-point" data-tooltip="Grade: A, 4 Credits">HS 201 - Western Civilization</div>
+            <div class="timeline-point" data-tooltip="Grade: A, 3 Credits">MN 325 - Organizational Behavior</div>
+            <div class="timeline-point" data-tooltip="Grade: A, 4 Credits">MT 135 - Calc & Analytic Geometry 1</div>
+            <div class="timeline-point" data-tooltip="Grade: B+, 4 Credits">MT 136 - Calc & Analytic Geometry 2</div>
+            <div class="timeline-point" data-tooltip="Grade: A, 4 Credits">MT 229 - Probability and Statistics</div>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <h3 class="text-xl glow">John Carroll University - Spring 2013</h3>
+        <div class="horizontal-timeline">
+            <div class="timeline-point" data-tooltip="Grade: A-, 3 Credits">AC 202 - Accounting Principles II</div>
+            <div class="timeline-point" data-tooltip="Grade: A, 3 Credits">EC 301 - Microeconomics</div>
+            <div class="timeline-point" data-tooltip="Grade: A, 3 Credits">FN 312 - Business Finance</div>
+            <div class="timeline-point" data-tooltip="Grade: A-, 3 Credits">MK 301 - Marketing Principles</div>
+            <div class="timeline-point" data-tooltip="Grade: A, 3 Credits">MN 202 - Business Communications</div>
+            <div class="timeline-point" data-tooltip="Grade: A, 3 Credits">SC 101 - Introductory Sociology</div>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <h3 class="text-xl glow">John Carroll University - Fall 2012</h3>
+        <div class="horizontal-timeline">
+            <div class="timeline-point" data-tooltip="Grade: A-, 3 Credits">AC 201 - Accounting Principles I</div>
+            <div class="timeline-point" data-tooltip="Grade: A, 3 Credits">BI 200 - Management Information Systems</div>
+            <div class="timeline-point" data-tooltip="Grade: A, 3 Credits">CS 125 - Intro to Web Design</div>
+            <div class="timeline-point" data-tooltip="Grade: A, 3 Credits">EC 208 - Business and Economic Statistics</div>
+            <div class="timeline-point" data-tooltip="Grade: A, 3 Credits">PL 311 - Business Ethics</div>
+            <div class="timeline-point" data-tooltip="Grade: A, 3 Credits">RL 101 - Intro to Theology</div>
+        </div>
+    </div>
+
+	<div class="timeline-item">
+    <h3 class="text-xl glow">Cuyahoga Community College - Summer 2012</h3>
+    <div class="horizontal-timeline">
+        <div class="timeline-point" data-tooltip="Grade: A, 3 Credits">PS 101 - Introduction to Psychology</div>
+    </div>
+</div>
+
+    <div class="timeline-item">
+        <h3 class="text-xl glow">John Carroll University - Spring 2012</h3>
+        <div class="horizontal-timeline">
+            <div class="timeline-point" data-tooltip="Grade: A, 1 Credit">BI 107 - Spreadsheet Applications</div>
+            <div class="timeline-point" data-tooltip="Grade: A, 1 Credit">BI 108 - Database Applications</div>
+            <div class="timeline-point" data-tooltip="Grade: A, 1 Credit">BI 109 - Communications Applications</div>
+            <div class="timeline-point" data-tooltip="Grade: A, 3 Credits">EC 202 - Principles of Economics II</div>
+            <div class="timeline-point" data-tooltip="Grade: A-, 3 Credits">EN 112 - Composition and Rhetoric II</div>
+            <div class="timeline-point" data-tooltip="Grade: A, 3 Credits">MT 167 - Mathematics of Change and Chance</div>
+            <div class="timeline-point" data-tooltip="Grade: A, 3 Credits">PL 101 - Introduction to Philosophy (Honors)</div>
+            <div class="timeline-point" data-tooltip="Grade: A-, 3 Credits">SP 202 - Intermediate Spanish II</div>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <h3 class="text-xl glow">John Carroll University - Fall 2011</h3>
+        <div class="horizontal-timeline">
+            <div class="timeline-point" data-tooltip="Grade: A, 1 Credit">AR 120 - Purpose and Place</div>
+            <div class="timeline-point" data-tooltip="Grade: A, 1 Credit">CE 101 - Introduction to Careers</div>
+            <div class="timeline-point" data-tooltip="Grade: A, 2 Credits">CO 100 - Speech Communication</div>
+            <div class="timeline-point" data-tooltip="Grade: A, 3 Credits">EC 201 - Principles of Economics I</div>
+            <div class="timeline-point" data-tooltip="Grade: A, 3 Credits">EN 111 - Composition and Rhetoric I</div>
+            <div class="timeline-point" data-tooltip="Grade: A, 3 Credits">FY SEM - First Year Seminar</div>
+            <div class="timeline-point" data-tooltip="Grade: A-, 3 Credits">SP 201 - Intermediate Spanish I</div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Online Courses Timeline -->
+
+    <section id="online-courses" class="timeline">
+        <h2 class="text-3xl glow text-center">Completed Online Courses with Links</h2>
+
+        <div class="legend">
+            <div class="legend-item">
+                <span class="legend-shape circle" style="background-color: #2563eb;"></span> Python
+            </div>
+            <div class="legend-item">
+                <span class="legend-shape circle" style="background-color: #10b981;"></span> R
+            </div>
+            <div class="legend-item">
+                <span class="legend-shape circle" style="background-color: #f97316;"></span> SQL
+            </div>
+            <div class="legend-item">
+                <span class="legend-shape circle" style="background-color: #9333ea;"></span> SAS
+            </div>
+            <div class="legend-item">
+                <span class="legend-shape circle" style="background-color: #9ca3af;"></span> Other
+            </div>
+            <div class="legend-item">
+                <span class="legend-shape circle" style="background-color: #ffffff;"></span> Data Science
+            </div>
+            <div class="legend-item">
+                <span class="legend-shape square" style="background-color: #ffffff;"></span> Data Engineering
+            </div>
+            <div class="legend-item">
+                <span class="legend-shape octagon" style="background-color: #ffffff;"></span> Software Engineering
+            </div>
+        </div>
+
+<div class="timeline">
+
+    <!-- 2024 -->
+    <div class="timeline-item">
+        <h3 class="text-xl glow">2024</h3>
+        <div class="horizontal-timeline">
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/intro-to-python" target="_blank">Introduction to Python</a></div>
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/machine-learning-for-time-series-data-in-python" target="_blank">Machine Learning for Time Series Data in Python</a></div>
+            <div class="timeline-point square" data-category="sql"><a href="https://app.datacamp.com/learn/courses/postgresql-summary-stats-and-window-functions" target="_blank">PostgreSQL Summary Stats and Window Functions</a></div>
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/advanced-deep-learning-with-keras" target="_blank">Advanced Deep Learning with Keras</a></div>
+            <div class="timeline-point square" data-category="sql"><a href="https://app.datacamp.com/learn/courses/data-driven-decision-making-in-sql" target="_blank">Data-Driven Decision Making in SQL</a></div>
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/data-structures-and-algorithms-in-python" target="_blank">Data Structures and Algorithms in Python</a></div>
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/introduction-to-chatgpt" target="_blank">Introduction to ChatGPT</a></div>
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/software-engineering-principles-in-python" target="_blank">Software Engineering Principles in Python</a></div>
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/intro-to-statistics-with-python" target="_blank">Introduction to Statistics</a></div>
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/data-communication-concepts" target="_blank">Data Communication Concepts</a></div>
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/model-validation-in-python" target="_blank">Model Validation in Python</a></div>
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/feature-engineering-for-machine-learning-in-python" target="_blank">Feature Engineering for Machine Learning in Python</a></div>
+            <div class="timeline-point square" data-category="sql"><a href="https://app.datacamp.com/learn/courses/functions-for-manipulating-data-in-sql-server" target="_blank">Functions for Manipulating Data in SQL Server</a></div>
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/cleaning-data-in-python" target="_blank">Cleaning Data in Python</a></div>
+            <div class="timeline-point square" data-category="other"><a href="https://app.datacamp.com/learn/courses/mlops-deployment-and-life-cycling" target="_blank">MLOps Deployment and Life Cycling</a></div>
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/exploring-and-analyzing-data-in-python" target="_blank">Exploring and Analyzing Data in Python</a></div>
+            <div class="timeline-point square" data-category="sql"><a href="https://app.datacamp.com/learn/courses/analyzing-marketing-campaigns-with-pandas" target="_blank">Analyzing Marketing Campaigns with pandas</a></div>
+        </div>
+    </div>
+
+    <!-- 2023 -->
+    <div class="timeline-item">
+        <h3 class="text-xl glow">2023</h3>
+        <div class="horizontal-timeline">
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/machine-learning-with-tree-based-models-in-python" target="_blank">Machine Learning with Tree-Based Models in Python</a></div>
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/unsupervised-learning-in-python" target="_blank">Unsupervised Learning in Python</a></div>
+            <div class="timeline-point square" data-category="sql"><a href="https://app.datacamp.com/learn/courses/sql-for-joining-data" target="_blank">SQL for Joining Data</a></div>
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/introduction-to-data-science-in-python" target="_blank">Introduction to Data Science in Python</a></div>
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/streamlined-data-ingestion-with-pandas" target="_blank">Streamlined Data Ingestion with pandas</a></div>
+            <div class="timeline-point square" data-category="sql"><a href="https://app.datacamp.com/learn/courses/exploratory-data-analysis-in-sql" target="_blank">Exploratory Data Analysis in SQL</a></div>
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/introduction-to-pyspark" target="_blank">Introduction to PySpark</a></div>
+            <div class="timeline-point square" data-category="other"><a href="https://app.datacamp.com/learn/courses/aws-concepts" target="_blank">AWS Concepts</a></div>
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/introduction-to-deep-learning-in-python" target="_blank">Introduction to Deep Learning in Python</a></div>
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/dimensionality-reduction-in-python" target="_blank">Dimensionality Reduction in Python</a></div>
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/machine-learning-with-scikit-learn" target="_blank">Machine Learning with scikit-learn</a></div>
+            <div class="timeline-point square" data-category="sql"><a href="https://app.datacamp.com/learn/courses/analyzing-data-in-spreadsheets" target="_blank">Analyzing Data in Spreadsheets</a></div>
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/sampling-in-python" target="_blank">Sampling in Python</a></div>
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/machine-learning-for-business" target="_blank">Machine Learning for Business</a></div>
+            <div class="timeline-point square" data-category="other"><a href="https://app.datacamp.com/learn/courses/understanding-cloud-computing" target="_blank">Understanding Cloud Computing</a></div>
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/image-processing-in-python" target="_blank">Image Processing in Python</a></div>
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/linear-classifiers-in-python" target="_blank">Linear Classifiers in Python</a></div>
+        </div>
+    </div>
+
+    <!-- 2022 -->
+    <div class="timeline-item">
+        <h3 class="text-xl glow">2022</h3>
+        <div class="horizontal-timeline">
+            <div class="timeline-point square" data-category="sql"><a href="https://app.datacamp.com/learn/courses/joining-data-in-sql" target="_blank">Joining Data in SQL</a></div>
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/machine-learning-with-tree-based-models-in-python" target="_blank">Machine Learning with Tree-Based Models in Python</a></div>
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/introduction-to-functions-in-python" target="_blank">Introduction to Functions in Python</a></div>
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/feature-engineering-for-nlp-in-python" target="_blank">Feature Engineering for NLP in Python</a></div>
+            <div class="timeline-point square" data-category="sql"><a href="https://app.datacamp.com/learn/courses/advanced-sql-techniques" target="_blank">Advanced SQL Techniques</a></div>
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/python-toolbox" target="_blank">Python Toolbox</a></div>
+            <div class="timeline-point square" data-category="other"><a href="https://app.datacamp.com/learn/courses/mlops-concepts" target="_blank">MLOps Concepts</a></div>
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/machine-learning-with-scikit-learn" target="_blank">Machine Learning with scikit-learn</a></div>
+            <div class="timeline-point square" data-category="sql"><a href="https://app.datacamp.com/learn/courses/data-manipulation-in-sql" target="_blank">Data Manipulation in SQL</a></div>
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/introduction-to-data-visualization-with-seaborn" target="_blank">Introduction to Data Visualization with Seaborn</a></div>
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/machine-learning-with-pyspark" target="_blank">Machine Learning with PySpark</a></div>
+            <div class="timeline-point square" data-category="other"><a href="https://app.datacamp.com/learn/courses/connecting-data-in-tableau" target="_blank">Connecting Data in Tableau</a></div>
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/python-for-spreadsheet-users" target="_blank">Python for Spreadsheet Users</a></div>
+            <div class="timeline-point square" data-category="sql"><a href="https://app.datacamp.com/learn/courses/postgresql-summary-stats-and-window-functions" target="_blank">PostgreSQL Summary Stats and Window Functions</a></div>
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/working-with-dates-and-times-in-python" target="_blank">Working with Dates and Times in Python</a></div>
+            <div class="timeline-point square" data-category="sql"><a href="https://app.datacamp.com/learn/courses/data-communication-concepts" target="_blank">Data Communication Concepts</a></div>
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/artificial-intelligence-ai-concepts-in-python" target="_blank">Artificial Intelligence (AI) Concepts in Python</a></div>
+        </div>
+    </div>
+
+    <!-- 2021 -->
+    <div class="timeline-item">
+        <h3 class="text-xl glow">2021</h3>
+        <div class="horizontal-timeline">
+            <div class="timeline-point circle" data-category="r"><a href="https://app.datacamp.com/learn/courses/introduction-to-r" target="_blank">Introduction to R</a></div>
+            <div class="timeline-point circle" data-category="r"><a href="https://app.datacamp.com/learn/courses/data-visualization-in-r" target="_blank">Data Visualization in R</a></div>
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/applying-sql-to-real-world-problems" target="_blank">Applying SQL to Real-World Problems</a></div>
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/correlation-and-regression-in-r" target="_blank">Correlation and Regression in R</a></div>
+            <div class="timeline-point square" data-category="sql"><a href="https://app.datacamp.com/learn/courses/intermediate-sql-queries" target="_blank">Intermediate SQL Queries</a></div>
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/marketing-analytics-for-business" target="_blank">Marketing Analytics for Business</a></div>
+            <div class="timeline-point circle" data-category="r"><a href="https://app.datacamp.com/learn/courses/reporting-with-r-markdown" target="_blank">Reporting with R Markdown</a></div>
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/end-to-end-machine-learning" target="_blank">End-to-End Machine Learning</a></div>
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/hyperparameter-tuning-in-python" target="_blank">Hyperparameter Tuning in Python</a></div>
+            <div class="timeline-point square" data-category="sql"><a href="https://app.datacamp.com/learn/courses/applying-sql-to-real-world-problems" target="_blank">Applying SQL to Real-World Problems</a></div>
+        </div>
+    </div>
+
+    <!-- 2020 -->
+    <div class="timeline-item">
+        <h3 class="text-xl glow">2020</h3>
+        <div class="horizontal-timeline">
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/introduction-to-data-visualization-with-matplotlib" target="_blank">Introduction to Data Visualization with Matplotlib</a></div>
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/data-manipulation-with-pandas" target="_blank">Data Manipulation with pandas</a></div>
+            <div class="timeline-point square" data-category="sql"><a href="https://app.datacamp.com/learn/courses/sql-for-joining-data" target="_blank">SQL for Joining Data</a></div>
+            <div class="timeline-point square" data-category="sql"><a href="https://app.datacamp.com/learn/courses/data-manipulation-in-sql" target="_blank">Data Manipulation in SQL</a></div>
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/working-with-dates-and-times-in-python" target="_blank">Working with Dates and Times in Python</a></div>
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/machine-learning-for-business" target="_blank">Machine Learning for Business</a></div>
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/sampling-in-python" target="_blank">Sampling in Python</a></div>
+            <div class="timeline-point square" data-category="sql"><a href="https://app.datacamp.com/learn/courses/applying-sql-to-real-world-problems" target="_blank">Applying SQL to Real-World Problems</a></div>
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/hyperparameter-tuning-in-python" target="_blank">Hyperparameter Tuning in Python</a></div>
+        </div>
+    </div>
+
+    <!-- 2019 -->
+    <div class="timeline-item">
+        <h3 class="text-xl glow">2019</h3>
+        <div class="horizontal-timeline">
+            <div class="timeline-point circle" data-category="r"><a href="https://app.datacamp.com/learn/courses/introduction-to-the-tidyverse" target="_blank">Introduction to the Tidyverse</a></div>
+            <div class="timeline-point circle" data-category="r"><a href="https://app.datacamp.com/learn/courses/data-manipulation-in-r-with-dplyr" target="_blank">Data Manipulation in R with dplyr</a></div>
+            <div class="timeline-point square" data-category="sql"><a href="https://app.datacamp.com/learn/courses/data-driven-decision-making-in-sql" target="_blank">Data-Driven Decision Making in SQL</a></div>
+            <div class="timeline-point square" data-category="sql"><a href="https://app.datacamp.com/learn/courses/intermediate-sql" target="_blank">Intermediate SQL</a></div>
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/feature-engineering-for-nlp-in-python" target="_blank">Feature Engineering for NLP in Python</a></div>
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/linear-classifiers-in-python" target="_blank">Linear Classifiers in Python</a></div>
+            <div class="timeline-point square" data-category="sql"><a href="https://app.datacamp.com/learn/courses/postgresql-summary-stats-and-window-functions" target="_blank">PostgreSQL Summary Stats and Window Functions</a></div>
+            <div class="timeline-point circle" data-category="python"><a href="https://app.datacamp.com/learn/courses/streamlined-data-ingestion-with-pandas" target="_blank">Streamlined Data Ingestion with pandas</a></div>
+        </div>
+    </div>
+
+    <!-- 2018 -->
+    <div class="timeline-item">
+        <h3 class="text-xl glow">2018</h3>
+        <div class="horizontal-timeline">
+            <div class="timeline-point circle" data-category="r"><a href="https://app.datacamp.com/learn/courses/writing-functions-in-r" target="_blank">Writing Functions in R</a></div>
+            <div class="timeline-point circle" data-category="r"><a href="https://app.datacamp.com/learn/courses/data-visualization-in-r" target="_blank">Data Visualization in R</a></div>
+            <div class="timeline-point circle" data-category="r"><a href="https://app.datacamp.com/learn/courses/reporting-with-r-markdown" target="_blank">Reporting with R Markdown</a></div>
+            <div class="timeline-point square" data-category="sql"><a href="https://app.datacamp.com/learn/courses/sql-for-joining-data" target="_blank">SQL for Joining Data</a></div>
+            <div class="timeline-point square" data-category="sql"><a href="https://app.datacamp.com/learn/courses/data-manipulation-in-sql" target="_blank">Data Manipulation in SQL</a></div>
+        </div>
+    </div>
+
+    <!-- 2017 -->
+    <div class="timeline-item">
+        <h3 class="text-xl glow">2017</h3>
+        <div class="horizontal-timeline">
+            <div class="timeline-point circle" data-category="r"><a href="https://app.datacamp.com/learn/courses/cleaning-data-in-r" target="_blank">Cleaning Data in R</a></div>
+            <div class="timeline-point circle" data-category="r"><a href="https://app.datacamp.com/learn/courses/introduction-to-data-in-r" target="_blank">Introduction to Data in R</a></div>
+            <div class="timeline-point square" data-category="sql"><a href="https://app.datacamp.com/learn/courses/applying-sql-to-real-world-problems" target="_blank">Applying SQL to Real-World Problems</a></div>
+            <div class="timeline-point circle" data-category="r"><a href="https://app.datacamp.com/learn/courses/time-series-analysis-in-r" target="_blank">Time Series Analysis in R</a></div>
+            <div class="timeline-point square" data-category="sql"><a href="https://app.datacamp.com/learn/courses/intermediate-sql-queries" target="_blank">Intermediate SQL Queries</a></div>
+        </div>
+    </div>
+
+    <!-- 2016 -->
+    <div class="timeline-item">
+        <h3 class="text-xl glow">2016</h3>
+        <div class="horizontal-timeline">
+            <div class="timeline-point circle" data-category="r"><a href="https://app.datacamp.com/learn/courses/introduction-to-r" target="_blank">Introduction to R</a></div>
+            <div class="timeline-point circle" data-category="r"><a href="https://app.datacamp.com/learn/courses/machine-learning-with-caret-in-r" target="_blank">Machine Learning with caret in R</a></div>
+            <div class="timeline-point circle" data-category="r"><a href="https://app.datacamp.com/learn/courses/forecasting-in-r" target="_blank">Forecasting in R</a></div>
+        </div>
+    </div>
+
+</div>
+
+
+</section>
+
+
+
     <footer class="py-6 text-center">
         <p class="text-sm">&copy; 2024 John Urwin | All Rights Reserved</p>
     </footer>
 
 
-    <script>
-        gsap.from(".glow", { opacity: 0, y: 20, duration: 1, stagger: 0.3 });
-        gsap.from(".timeline-item", {
-            scrollTrigger: {
-                trigger: ".timeline-item",
-                start: "top 80%",
-                toggleActions: "play none none none"
-            },
-            opacity: 0,
-            x: function(index, target) {
-                return target.classList.contains('even') ? 100 : -100;
-            },
-            duration: 1,
-            stagger: 0.3
-        });
-    </script>
 </body>
 </html>
