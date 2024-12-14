@@ -6,13 +6,28 @@
     <title>Bucket Problem or Bird Puzzle</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="bucket_styles.css">
+    <link rel="stylesheet" href="interview_question_2_regression.css">
 </head>
 <body>
     <header>
-<a href="https://johnurwin.github.io/" class="mt-8 glow-button">Back to Home Page</a>
-        <h1 id="problem-title">5-Gallon and 3-Gallon Bucket Problem</h1>
-        <p id="problem-description">Your goal is to measure exactly 4 gallons of water using the buckets below. Use the buttons to perform actions step by step.</p>
-        <button id="toggle-problem-btn" onclick="toggleProblem()">Switch to Bird Puzzle</button>
+        <a href="https://johnurwin.github.io/" class="mt-8 glow-button">Back to Home Page</a>
+        <h1 id="problem-title">Welcome!</h1>
+        <p id="problem-description">Can you answer all 10 of these Interactive Interview Questions? Click an Interview Question Button to Begin</p>
+        <button id="toggle-problem-btn" onclick="toggleProblem()">Take a Break and Switch to Bird Puzzle</button>
+        
+        <!-- New Buttons for Interview Questions -->
+        <div id="interview-questions">
+            <button onclick="toggleInterviewQuestion(1)">Interview Question 1</button>
+            <button onclick="toggleInterviewQuestion(2)">Interview Question 2</button>
+            <button onclick="toggleInterviewQuestion(3)">Interview Question 3</button>
+            <button onclick="toggleInterviewQuestion(4)">Interview Question 4</button>
+            <button onclick="toggleInterviewQuestion(5)">Interview Question 5</button>
+            <button onclick="toggleInterviewQuestion(6)">Interview Question 6</button>
+            <button onclick="toggleInterviewQuestion(7)">Interview Question 7</button>
+            <button onclick="toggleInterviewQuestion(8)">Interview Question 8</button>
+            <button onclick="toggleInterviewQuestion(9)">Interview Question 9</button>
+            <button onclick="toggleInterviewQuestion(10)">Interview Question 10</button>
+        </div>
     </header>
     <main id="main-content">
         <div id="bucket-problem">
@@ -53,18 +68,165 @@
                 <div class="tree" id="tree-5">Tree 5</div>
             </div>
             <div class="controls">
-		<button onclick="toggleFlap()">Toggle Flap</button>
+                <button onclick="toggleFlap()">Toggle Flap</button>
                 <button onclick="moveBird('up')">Fly Up</button>
                 <button onclick="moveBird('down')">Fly Down</button>
                 <button onclick="moveBird('left')">Fly Left</button>
                 <button onclick="moveBird('right')">Fly Right</button>
                 <button onclick="getHint()">Get a Hint</button>
-		<button onclick="transformBird()">Transform into Eagle</button>
+                <button onclick="transformBird()">Transform into Eagle</button>
             </div>
             <p id="bird-status">Choose a path for the bird!</p>
+        </div>
+
+<div id="interview-question-2" style="display: none;">
+<body>
+    <h2>Interactive Regression Model</h2>
+    <p style="text-align: center;">Adjust the coefficients and intercept to minimize the Mean Squared Error (MSE).</p>
+
+    <div id="questions">
+        <h3>Interview Questions</h3>
+        <ol>
+            <li>What is the impact of the slope and intercept on a univariate regression model?</li>
+            <li>How do multiple features interact in a multivariate regression model?</li>
+            <li>What strategies can minimize the MSE?</li>
+	    <li>How do changes to the intercept and slope in univariate regression impact the line's position and angle?</li>
+	    <li>What does the regression plane in multivariate regression signify, and how do its coefficients affect the fit?</li>
+	    <li>Why does minimizing the Mean Squared Error (MSE) improve the model's accuracy?</li>
+	    <li>In multivariate regression, how would adding interaction terms (e.g., x1 * x2) influence the plane's shape?</li>
+        </ol>
+    </div>
+
+    <button id="toggle-button" onclick="toggleRegressionMode()">Switch to Multivariate Regression</button>
+
+    <div id="univariate-controls">
+        <div class="slider-container">
+            <label for="intercept">Intercept:</label>
+            <input type="range" id="intercept" min="-10" max="10" step="0.1" value="0" oninput="updateRegressionModel()">
+            <span id="intercept-value">0</span>
+        </div>
+
+        <div class="slider-container">
+            <label for="slope">Slope:</label>
+            <input type="range" id="slope" min="-5" max="5" step="0.1" value="1" oninput="updateRegressionModel()">
+            <span id="slope-value">1</span>
+        </div>
+    </div>
+
+    <div id="multivariate-controls" style="display: none;">
+        <div class="slider-container">
+            <label for="coef-x1">Coefficient X1:</label>
+            <input type="range" id="coef-x1" min="-5" max="5" step="0.1" value="1" oninput="updateRegressionModel()">
+            <span id="coef-x1-value">1</span>
+        </div>
+
+        <div class="slider-container">
+            <label for="coef-x2">Coefficient X2:</label>
+            <input type="range" id="coef-x2" min="-5" max="5" step="0.1" value="1" oninput="updateRegressionModel()">
+            <span id="coef-x2-value">1</span>
+        </div>
+
+        <div class="slider-container">
+            <label for="intercept-multi">Intercept:</label>
+            <input type="range" id="intercept-multi" min="-10" max="10" step="0.1" value="0" oninput="updateRegressionModel()">
+            <span id="intercept-multi-value">0</span>
+        </div>
+    </div>
+
+    <div class="graph-container">
+        <canvas id="regression-plot" width="600" height="400"></canvas>
+        <div id="threejs-container"></div>
+    </div>
+
+    <p id="mse-output" style="text-align: center; font-weight: bold;">MSE: Calculating...</p>
+
+    <div class="legend">
+        <p><span style="color: blue; font-weight: bold;">●</span> Data Points</p>
+        <p><span style="color: red; font-weight: bold;">━</span> Regression Line / Plane Projection</p>
+    </div>
+
+
+</div>
+
+        <div id="interview-question-3" style="display: none;">
+            <h2>Interview Question 3</h2>
+            <p>This is a placeholder for Interview Question 3.</p>
+        </div>
+
+        <div id="interview-question-4" style="display: none;">
+            <h2>Interview Question 4</h2>
+            <p>This is a placeholder for Interview Question 4.</p>
+        </div>
+
+        <div id="interview-question-5" style="display: none;">
+            <h2>Interview Question 5</h2>
+            <p>This is a placeholder for Interview Question 5.</p>
+        </div>
+
+        <div id="interview-question-6" style="display: none;">
+            <h2>Interview Question 6</h2>
+            <p>This is a placeholder for Interview Question 6.</p>
+        </div>
+
+        <div id="interview-question-7" style="display: none;">
+            <h2>Interview Question 7</h2>
+            <p>This is a placeholder for Interview Question 7.</p>
+        </div>
+
+        <div id="interview-question-8" style="display: none;">
+            <h2>Interview Question 8</h2>
+            <p>This is a placeholder for Interview Question 8.</p>
+        </div>
+
+        <div id="interview-question-9" style="display: none;">
+            <h2>Interview Question 9</h2>
+            <p>This is a placeholder for Interview Question 9.</p>
+        </div>
+
+        <div id="interview-question-10" style="display: none;">
+            <h2>Interview Question 10</h2>
+            <p>This is a placeholder for Interview Question 10.</p>
         </div>
     </main>
     <audio id="water-splash" src="water-splash.mp3"></audio>
     <script src="bucket_animation.js"></script>
+    <script src="interview_question_2_regression.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <script>
+        function toggleInterviewQuestion(questionNumber) {
+            // Hide all sections
+            document.querySelectorAll('#main-content > div').forEach(div => {
+                div.style.display = 'none';
+            });
+
+            // Show the selected question or problem
+            if (questionNumber === 1) {
+                document.getElementById('bucket-problem').style.display = 'block';
+            } else {
+                const questionDiv = document.getElementById(`interview-question-${questionNumber}`);
+                if (questionDiv) {
+                    questionDiv.style.display = 'block';
+                }
+            }
+
+            // Update title and description
+            const problemTitle = document.getElementById('problem-title');
+            const problemDescription = document.getElementById('problem-description');
+            
+            if (questionNumber === 1) {
+                problemTitle.textContent = '5-Gallon and 3-Gallon Bucket Problem';
+                problemDescription.textContent = 'Your goal is to measure exactly 4 gallons of water using the buckets below. Use the buttons to perform actions step by step.';
+            }   else if (questionNumber === 2) {
+                problemTitle.textContent = 'Univariate and Multivariate Regression';
+                problemDescription.textContent = 'Use the interactive regressions to help answer the univariate and multivariate regression questions.';
+	    }   else {
+                problemTitle.textContent = `Interview Question ${questionNumber}`;
+                problemDescription.textContent = `This is the description for Interview Question ${questionNumber}.`;
+            }
+        }
+    </script>
 </body>
 </html>
+
+

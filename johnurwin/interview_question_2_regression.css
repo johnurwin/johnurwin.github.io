@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Regression Model</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        .graph-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 20px;
+        }
+        canvas {
+            border: 2px solid #333;
+            background: linear-gradient(180deg, #fff, #e6e6e6);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .slider-container {
+            margin: 15px 0;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .legend {
+            margin-top: 20px;
+            text-align: center;
+        }
+        #threejs-container {
+            width: 600px;
+            height: 400px;
+        }

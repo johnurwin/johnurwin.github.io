@@ -36,10 +36,13 @@
             position: relative;
             margin: 4rem 0;
             cursor: pointer;
+            transition: all 0.3s ease;
         }
-        .timeline-item:hover .details {
-            opacity: 1;
-            transform: scale(1);
+        .timeline-item:hover {
+            transform: scale(1.02);
+        }
+        .timeline-item:hover .horizontal-timeline {
+            display: flex;
         }
         .timeline-item:nth-child(odd) {
             text-align: right;
@@ -57,6 +60,61 @@
             background: radial-gradient(circle, #3b82f6, #1e293b);
             border-radius: 50%;
             z-index: 10;
+        }
+        .horizontal-timeline {
+            display: none;
+            flex-direction: row;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1rem auto;
+            padding: 1rem;
+            background: rgba(15, 23, 42, 0.9);
+            border-radius: 12px;
+            border: 2px solid #3b82f6;
+            transform: scale(0.95);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.6);
+        }
+        .timeline-point {
+            position: relative;
+            margin: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(145deg, #1e293b, #0f172a);
+            color: #fff;
+            border: 2px solid #3b82f6;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .timeline-point:hover {
+            background: linear-gradient(145deg, #3b82f6, #2563eb);
+            color: #fff;
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.8);
+        }
+        .timeline-point::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(59, 130, 246, 0.9);
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.875rem;
+            text-align: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform: translateX(-50%) translateY(10px);
+            z-index: 10;
+        }
+        .timeline-point:hover::after {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
         }
         .details {
             opacity: 0;
@@ -147,32 +205,60 @@
     </section>
 
     <!-- Experience Timeline -->
+    <!-- Experience Section -->
+    <section id="experience" class="px-4">
+        <h2 class="text-3xl glow text-center">Work Experience</h2>
+    </section>
+        <!-- Amazon Timeline -->
     <section id="timeline" class="timeline">
         <div class="timeline-item">
-            <h2 class="text-xl glow">Amazon - Business Intelligence Engineer</h2>
-            <p class="mt-2">05/2022 - Present</p>
-            <div class="mt-2 details">Innovated a Source of Truth pricing and promotions pipeline, saving 3,000+ hours of query time.<br>Built dashboards saving 4,000+ hours annually and informed $30M in coupon strategy improvements.</div>
-            <a href="#" class="text-blue-400 hover:underline">Click to learn more</a>
-        </div>
-        <div class="timeline-item">
-            <h2 class="text-xl glow">Progressive Insurance - Senior Data Analyst</h2>
-            <p class="mt-2">06/2021 - 05/2022</p>
-            <div class="mt-2 details">Streamlined claims processing, reducing legal costs, and developed SQL triggers for prioritizing claims.<br> Researched litigation claim solutions for proactive resolution.</div>
-            <a href="#" class="text-blue-400 hover:underline">Click to learn more</a>
-        </div>
-        <div class="timeline-item">
-            <h2 class="text-xl glow">Cleveland Clinic - Data Scientist</h2>
-            <p class="mt-2">12/2017 - 06/2021</p>
-            <div class="mt-2 details">Developed a predictive cost model aiding patient care prioritization.<br>Collaborated to create a Rate Realization Model predicting insurance and patient payments.<br> Presented revenue modeling insights at a national healthcare conference.</div>
-            <a href="#" class="text-blue-400 hover:underline">Click to learn more</a>
-        </div>
-        <div class="timeline-item">
-            <h2 class="text-xl glow">Imagine Software - Product Support Analyst</h2>
-            <p class="mt-2">02/2017 - 11/2017</p>
-            <div class="mt-2 details">Analyzed client problems, provided solutions, and explained securities tracking, including swaps and exotic options.</div>
+            <h2 class="text-xl glow">Amazon - Business Intelligence Engineer (05/2022 - Present)</h2>
+            <div class="horizontal-timeline">
+                <div class="timeline-point" data-tooltip="Automated processes reducing query times by 80%.">Implemented automation reducing query times by 80%.</div>
+                <div class="timeline-point" data-tooltip="Created dashboards that informed $30M in strategies.">Developed dashboards informing $30M strategy.</div>
+                <div class="timeline-point" data-tooltip="Optimized pipelines saving 4,000+ hours annually.">Saved 4,000+ hours annually via optimized pipelines.</div>
+		<div class="timeline-point"> Innovated a Source of Truth pricing and promotions pipeline, saving 3,000+ hours of query time.<br>Built dashboards saving 4,000+ hours annually 			and informed $30M in coupon strategy improvements. </div>
+            </div>
             <a href="#" class="text-blue-400 hover:underline">Click to learn more</a>
         </div>
 
+        <!-- Progressive Insurance Timeline -->
+
+        <div class="timeline-item">
+            <h3 class="text-xl glow">Progressive Insurance - Senior Data Analyst (06/2021 - 05/2022)</h3>
+            <div class="horizontal-timeline">
+                <div class="timeline-point" data-tooltip="Enhanced claims processing systems.">Streamlined claims processing systems.</div>
+                <div class="timeline-point" data-tooltip="Optimized legal cost reduction strategies.">Reduced legal costs by 15% through optimization.</div>
+                <div class="timeline-point" data-tooltip="Implemented solutions to address litigation proactively.">Researched and implemented proactive litigation solutions.</div>
+            </div>
+        </div>
+
+        <!-- Cleveland Clinic Timeline -->
+        <div class="timeline-item">
+            <h3 class="text-xl glow">Cleveland Clinic - Data Scientist (12/2017 - 06/2021)</h3>
+            <div class="horizontal-timeline">
+                <div class="timeline-point" data-tooltip="Developed cost models to prioritize patient care.">Built predictive cost models improving patient care.</div>
+                <div class="timeline-point" data-tooltip="Created payment realization models.">Developed a Rate Realization Model for payments.</div>
+                <div class="timeline-point" data-tooltip="Presented at national healthcare conferences.">Presented revenue modeling at national conferences.</div>
+            </div>
+        </div>
+
+        <!-- Imagine Software Timeline -->
+        <div class="timeline-item">
+            <h3 class="text-xl glow">Imagine Software - Product Support Analyst (02/2017 - 11/2017)</h3>
+            <div class="horizontal-timeline">
+                <div class="timeline-point" data-tooltip="Resolved technical issues for clients.">Resolved client issues on securities tracking.</div>
+                <div class="timeline-point" data-tooltip="Provided expertise on complex financial instruments.">Provided expert guidance on swaps and options.</div>
+            </div>
+        </div>
+	</section>
+
+    <!-- Experience Section -->
+    <section id="education" class="px-4">
+        <h2 class="text-3xl glow text-center">Education</h2>
+    </section>
+
+<section id="timeline" class="timeline">
 <div class="timeline">
     <!-- Fall 2016 -->
     <div class="timeline-item">
