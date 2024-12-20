@@ -1,0 +1,144 @@
+
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+    body {
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        background-color: #f9f9f9;
+        color: #333;
+    }
+    nav ul {
+        background-color: #444;
+        overflow: hidden;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+    nav ul li {
+        display: inline;
+    }
+    nav ul li a {
+        display: inline-block;
+        color: #fff;
+        padding: 15px;
+        text-decoration: none;
+    }
+    nav ul li a:hover {
+        background-color: #555;
+    }
+    header {
+        background: linear-gradient(135deg, #6b73ff, #000dff);
+        color: #fff;
+        padding: 40px 20px;
+        text-align: center;
+    }
+    main {
+        margin: 20px auto;
+        max-width: 800px;
+        padding: 0 20px;
+    }
+    h1, h2 {
+        color: #444;
+    }
+    ul, ol {
+        margin: 20px;
+        padding: 0 20px;
+    }
+    footer {
+        background-color: #444;
+        color: #fff;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    /* Education Section Styling */
+    .education-entry {
+        background: #ffffff;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        transition: transform 0.2s ease;
+    }
+
+    .education-entry:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .education-entry .degree {
+        color: #2c3e50;
+        margin: 0 0 10px 0;
+        font-size: 1.4em;
+    }
+
+    .education-entry .institution {
+        color: #3498db;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .education-entry .year {
+        color: #7f8c8d;
+        font-style: italic;
+        margin-bottom: 10px;
+    }
+
+    .education-entry .details ul {
+        margin: 10px 0;
+        padding-left: 20px;
+    }
+
+    .education-entry .details li {
+        color: #555;
+        margin: 5px 0;
+    }
+
+    /* Responsive design for education section */
+    @media (max-width: 768px) {
+        .education-entry {
+            padding: 15px;
+        }
+        
+        .education-entry .degree {
+            font-size: 1.2em;
+        }
+    }
+    
+/* Buttons */
+.buttons {
+    display: flex;
+    gap: 20px;
+    padding: 10px;
+    align-items: center;
+    justify-content: center; /* Centers the button horizontally */
+}
+
+.cta-button, .secondary-button {
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.cta-button {
+    background: #00796b;
+}
+
+.cta-button:hover {
+    background: #004d40;
+    transform: scale(1.1);
+}
+
+.secondary-button {
+    background: transparent;
+    border: 2px solid #00796b;
+}
+
+.secondary-button:hover {
+    background: #00796b;
+    transform: scale(1.1);
+}

@@ -1,0 +1,155 @@
+        .dcf-body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(120deg, #f6d365, #fda085);
+            color: #333;
+        }
+        .dcf-container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            position: relative;
+        }
+        .dcf-title {
+            text-align: center;
+            font-size: 2.5em;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        .dcf-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .dcf-input-group {
+            display: flex;
+            flex-direction: column;
+        }
+        .dcf-input-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .dcf-input {
+            padding: 10px;
+            border: 2px solid #4CAF50;
+            border-radius: 10px;
+            font-size: 1em;
+        }
+        .dcf-button {
+            display: block;
+            width: 100%;
+            background: #4CAF50;
+            color: white;
+            font-size: 1.2em;
+            padding: 15px;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .dcf-button:hover {
+            background: #45a049;
+        }
+        .dcf-results {
+            margin-top: 30px;
+            text-align: center;
+            padding: 20px;
+            background: #eafbea;
+            border-radius: 15px;
+            border: 2px dashed #4CAF50;
+        }
+        .dcf-results-title {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .dcf-results-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        .dcf-footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #666;
+        }
+        .formula-button {
+            position: absolute;
+            top: 20px;
+            padding: 10px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            z-index: 10;
+        }
+        .formula-button:hover {
+            background: #0056b3;
+        }
+.wacc-button {
+    display: flex;
+    top: 300px; /* Adjust based on desired placement */
+    left: 750px;
+    gap: 20px;
+    padding: 10px;
+}
+
+.dcf-button-formula {
+    display: flex;
+    top: 300px; /* Match the WACC button height */
+    right: 750px;
+    gap: 20px;
+    padding: 10px;
+}
+        .formula-display {
+            display: none;
+            margin: 20px 0;
+            padding: 15px;
+            background: #f9f9f9;
+            border-left: 4px solid #4CAF50;
+            font-family: monospace;
+            color: #333;
+        }
+
+        .dcf-answer-container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .question {
+            margin: 20px 0;
+        }
+        .question h3 {
+            margin: 0;
+        }
+        .answer {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #eafbea;
+            border-left: 4px solid #4CAF50;
+            border-radius: 5px;
+        }
+        dcf-answer-button {
+            margin-top: 10px;
+            padding: 10px 15px;
+            border: none;
+            background: #007BFF;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        dcf-answer-button:hover {
+            background: #0056b3;
+        }

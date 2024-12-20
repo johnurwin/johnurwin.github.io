@@ -1,0 +1,122 @@
+/* Unique styles for Clustering Outlier Detection */
+:root {
+    --clustering-primary-color: #0077cc;
+    --clustering-highlight-color: #e63946;
+    --clustering-background-color: #f9f9f9;
+    --clustering-text-color: #333333;
+    --clustering-card-background: #ffffff;
+}
+
+.clustering-body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: var(--clustering-background-color);
+    color: var(--clustering-text-color);
+    text-align: center;
+}
+
+.clustering-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    background-color: var(--clustering-card-background);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.clustering-title {
+    font-size: 28px;
+    color: var(--clustering-primary-color);
+}
+
+.clustering-instructions {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.clustering-button {
+    background-color: var(--clustering-primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.clustering-button:hover {
+    background-color: #005fa3;
+}
+
+.clustering-chart-container {
+    width: 100%;
+    height: 500px;
+    margin: 20px auto;
+}
+
+canvas#clustering-scatterPlot {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.clustering-feedback {
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--clustering-highlight-color);
+    white-space: pre-wrap;
+}
+
+.clustering-explanation {
+    font-size: 16px;
+    color: var(--clustering-text-color);
+    margin-top: 10px;
+}
+
+/* Questions and Answers Section */
+.clustering-qa-container {
+    margin: 40px auto;
+    max-width: 800px;
+    text-align: left;
+}
+
+.clustering-qa-title {
+    font-size: 24px;
+    color: #0077cc;
+    margin-bottom: 10px;
+}
+
+.clustering-qa {
+    margin: 15px 0;
+}
+
+.clustering-answer {
+    margin-top: 10px;
+    color: #333333;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.hidden {
+    display: none; /* Start hidden */
+}
+
+.clustering-reveal-button {
+    background-color: #0077cc;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.clustering-reveal-button:hover {
+    background-color: #005fa3;
+}
+
+
+

@@ -1,0 +1,70 @@
+/* Unique styles for Feature Selection Question */
+:root {
+    --fsq-primary-color: #0077cc;
+    --fsq-secondary-color: #f4b400;
+    --fsq-text-color: #333333;
+    --fsq-bg-color: #f9f9f9;
+    --fsq-card-bg: #ffffff;
+}
+
+.fsq-body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: var(--fsq-bg-color);
+    color: var(--fsq-text-color);
+    text-align: center;
+}
+
+.fsq-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    background-color: var(--fsq-card-bg);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.fsq-title {
+    font-size: 28px;
+    color: var(--fsq-primary-color);
+}
+
+.fsq-instruction {
+    font-size: 16px;
+    margin: 10px 0;
+    color: var(--fsq-text-color);
+}
+
+.fsq-button {
+    background-color: var(--fsq-primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.fsq-button:hover {
+    background-color: #005fa3;
+}
+
+.fsq-chart-container {
+    width: 100%;
+    height: 500px;
+    margin: 20px auto;
+}
+
+canvas#fsq-featureImportanceChart {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.fsq-feedback {
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    white-space: pre-wrap;
+}

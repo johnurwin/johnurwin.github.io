@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IOI Problem: Mountains and Valleys</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #1c1c1c, #2d2d2d);
+            color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            text-align: center;
+            border: 2px solid #444;
+            border-radius: 10px;
+            background-color: #333;
+            padding: 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.7);
+            max-width: 800px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #00ff99;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .question {
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        button {
+            background: #00ff99;
+            color: #1c1c1c;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #00cc77;
+        }
+
+        .output {
+            margin-top: 20px;
+            padding: 10px;
+            background: #444;
+            border-radius: 5px;
+            white-space: pre-wrap;
+        }
+
+        .chart {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .bar {
+            display: inline-block;
+            margin: 0 2px;
+            background-color: #00ff99;
+            width: 20px;
+            transition: height 0.15s;
+        }
+
+        .bar.mountain {
+            background-color: #ff9933;
+        }
+
+        .bar.valley {
+            background-color: #3399ff;
+        }
+
+        .code-view {
+            white-space: pre-wrap;
+            background: #2d2d2d;
+            color: #00ff99;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+            font-family: "Courier New", monospace;
+            font-size: 1rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+/* Buttons */
+.buttons {
+    display: flex;
+    gap: 20px;
+    padding: 10px;
+}
+
+.cta-button, .secondary-button {
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.cta-button {
+    background: #00796b;
+}
+
+.cta-button:hover {
+    background: #004d40;
+    transform: scale(1.1);
+}
+
+.secondary-button {
+    background: transparent;
+    border: 2px solid #00796b;
+}
+
+.secondary-button:hover {
+    background: #00796b;
+    transform: scale(1.1);
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+<div class="timeline-point"> <a href="https://johnurwin.github.io/" class="secondary-button">Back to Home Page</a> </div>
+<p> This problem was featured in the International Olympiad in Informatics (IOI) in 2005.</p>
+        <h1>IOI Problem: Mountains and Valleys</h1>
+        <p class="question">
+            You are given an array <code>H</code> of <code>N</code> integers, where each integer represents the height of a segment in a mountainous terrain.
+            <br><br>
+            Your goal is to determine the number of "mountains" and "valleys" in the array.
+            <br><br>
+            <b>Mountain:</b> A sequence of contiguous segments where the height strictly increases and then strictly decreases (e.g., 1, 3, 5, 4, 2).
+            <br>
+            <b>Valley:</b> A sequence of contiguous segments where the height strictly decreases and then strictly increases (e.g., 5, 3, 1, 2, 4).
+            <br><br>
+            <b>Input:</b> An array of integers representing heights.
+            <br>
+            <b>Output:</b> The number of mountains and valleys in the array.
+        </p>
+        <button id="reveal-solution">Reveal Solution</button>
+        <button id="view-js-code">View JavaScript Code</button>
+        <button id="view-py-code">View Python Code</button>
+	<p> If the code buttons stop working, please refresh the page and try again </p>
+    </div>
+
+    <div id="solutions"></div>
+
+    <script>
+        const examples = [
+            [2, 4, 6, 5, 3, 1, 2, 3, 4],
+            [1, 3, 2, 4, 3, 5, 4, 2, 3],
+            [5, 4, 3, 2, 3, 4, 5, 4, 3],
+            [1, 2, 1, 2, 1, 2, 1],
+            [7, 5, 3, 4, 6, 5, 4, 3, 2]
+        ];
+
+        const hardcodedResults = [
+            { mountains: 1, valleys: 1 },
+            { mountains: 2, valleys: 1 },
+            { mountains: 1, valleys: 1 },
+            { mountains: 3, valleys: 3 },
+            { mountains: 1, valleys: 2 }
+        ];
+
+        document.getElementById("reveal-solution").addEventListener("click", async () => {
+            const solutionsDiv = document.getElementById("solutions");
+            solutionsDiv.innerHTML = "";
+
+            for (let idx = 0; idx < examples.length; idx++) {
+                const example = examples[idx];
+                const result = hardcodedResults[idx];
+
+                const container = document.createElement("div");
+                container.classList.add("container");
+
+                const outputDiv = document.createElement("div");
+                outputDiv.classList.add("output");
+                outputDiv.textContent = `Example ${idx + 1}:
+Array: ${example}\nMountains: ${result.mountains}, Valleys: ${result.valleys}`;
+
+                const chartDiv = document.createElement("div");
+                chartDiv.classList.add("chart");
+
+                container.appendChild(outputDiv);
+                container.appendChild(chartDiv);
+
+                solutionsDiv.appendChild(container);
+
+                await animateChart(example, result, chartDiv);
+                await new Promise(resolve => setTimeout(resolve, 500));
+            }
+        });
+
+        document.getElementById("view-js-code").addEventListener("click", () => {
+            let existingCode = document.querySelector(".js-code-view");
+            if (!existingCode) {
+                const codeView = document.createElement("div");
+                codeView.classList.add("code-view", "js-code-view");
+                codeView.textContent = `const solveProblem = (heights) => {
+    let mountains = 0;
+    let valleys = 0;
+    let n = heights.length;
+    let i = 1;
+
+    while (i < n) {
+        if (heights[i] > heights[i - 1]) {
+            while (i < n && heights[i] > heights[i - 1]) i++;
+            if (i < n && heights[i] < heights[i - 1]) {
+                while (i < n && heights[i] < heights[i - 1]) i++;
+                mountains++;
+            }
+        } else if (heights[i] < heights[i - 1]) {
+            while (i < n && heights[i] < heights[i - 1]) i++;
+            if (i < n && heights[i] > heights[i - 1]) {
+                while (i < n && heights[i] > heights[i - 1]) i++;
+                valleys++;
+            }
+        } else {
+            i++;
+        }
+    }
+
+    return { mountains, valleys };
+};`;
+                document.getElementById("solutions").appendChild(codeView);
+            }
+            document.getElementById("view-js-code").disabled = true;
+        });
+
+        document.getElementById("view-py-code").addEventListener("click", () => {
+            let existingCode = document.querySelector(".py-code-view");
+            if (!existingCode) {
+                const codeView = document.createElement("div");
+                codeView.classList.add("code-view", "py-code-view");
+                codeView.textContent = `def solve_problem(heights):
+    mountains = 0
+    valleys = 0
+    n = len(heights)
+    i = 1
+
+    while i < n:
+        if heights[i] > heights[i - 1]:
+            while i < n and heights[i] > heights[i - 1]:
+                i += 1
+            if i < n and heights[i] < heights[i - 1]:
+                while i < n and heights[i] < heights[i - 1]:
+                    i += 1
+                mountains += 1
+        elif heights[i] < heights[i - 1]:
+            while i < n and heights[i] < heights[i - 1]:
+                i += 1
+            if i < n and heights[i] > heights[i - 1]:
+                while i < n and heights[i] > heights[i - 1]:
+                    i += 1
+                valleys += 1
+        else:
+            i += 1
+
+    return {"mountains": mountains, "valleys": valleys}`;
+                document.getElementById("solutions").appendChild(codeView);
+            }
+            document.getElementById("view-py-code").disabled = true;
+        });
+
+        const animateChart = async (array, result, chartDiv) => {
+            chartDiv.innerHTML = "";
+
+            for (let i = 0; i < array.length; i++) {
+                const bar = document.createElement("div");
+                bar.classList.add("bar");
+                bar.style.height = `${array[i] * 10}px`;
+
+                if (result.mountains && i % 2 === 0) {
+                    bar.classList.add("mountain");
+                } else if (result.valleys && i % 2 === 1) {
+                    bar.classList.add("valley");
+                }
+
+                chartDiv.appendChild(bar);
+                await new Promise(resolve => setTimeout(resolve, 150));
+            }
+        };
+    </script>
+</body>
+</html>

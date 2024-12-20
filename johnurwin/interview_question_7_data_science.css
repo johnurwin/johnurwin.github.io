@@ -1,0 +1,157 @@
+.app-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+    background: #ffffff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+/* Header Styles */
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+header p {
+    margin: 10px 0 0;
+    font-size: 16px;
+}
+
+/* User Section */
+#user-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+#user-greeting {
+    font-size: 16px;
+}
+
+.btn-login, .btn-logout {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-login:hover, .btn-logout:hover {
+    background-color: #0056b3;
+}
+
+/* Challenge Section */
+#challenge-section {
+    margin: 20px 0;
+}
+
+#challenge-question {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+#user-answer {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.btn-complete, #submitAnswerBtn {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-complete:hover, #submitAnswerBtn:hover {
+    background-color: #218838;
+}
+
+/* Feedback Styles */
+#feedback {
+    margin-top: 10px;
+    font-size: 14px;
+    color: red;
+}
+
+/* Badge Section */
+.badges-section {
+    margin-top: 30px;
+}
+
+.badges-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f0f8ff;
+    border: 1px solid #007bff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: background 0.3s;
+}
+
+.badge:hover {
+    background: #e0f0ff;
+}
+
+/* Progress Section */
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+.progress {
+    width: 0;
+    height: 100%;
+    background: #007bff;
+    transition: width 0.3s;
+}
+
+#progressCount {
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+/* Footer Styles */
+footer {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Congrats Message */
+#congrats-message {
+    margin-top: 20px;
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+}

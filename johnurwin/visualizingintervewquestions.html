@@ -7,6 +7,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="bucket_styles.css">
     <link rel="stylesheet" href="interview_question_2_regression.css">
+    <link rel="stylesheet" href="interview_question_3_dcf.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="interview_question_4_brain_teaser.css">
+    <link rel="stylesheet" href="interview_question_5_cross_validation.css">
+    <link rel="stylesheet" href="interview_question_6_statistical_significance.css">
+    <link rel="stylesheet" href="interview_question_7_data_science.css">
+    <link rel="stylesheet" href="interview_question_8_time_series.css">
+    <link rel="stylesheet" href="interview_question_9_feature_importance.css">
+    <link rel="stylesheet" href="interview_question_10_clustering.css">
+
 </head>
 <body>
     <header>
@@ -31,6 +41,10 @@
     </header>
     <main id="main-content">
         <div id="bucket-problem">
+        <p id="instruction">You need exactly 4 gallons of water, but we only have these two buckets.</p>
+        <p id="instruction">Can you walk through how you'd get 4 gallons of water?</p>
+        <p id="instruction">The answer can be achieved by clicking the buttons below.</p>
+        <p id="instruction">When correct, "Correct" will popup for 2 seconds</p>
             <div class="bucket-container">
                 <div class="bucket-group">
                     <div class="label">5-Gallon Bucket</div>
@@ -149,49 +163,537 @@
 </div>
 
         <div id="interview-question-3" style="display: none;">
-            <h2>Interview Question 3</h2>
-            <p>This is a placeholder for Interview Question 3.</p>
+<body class="dcf-body">
+    
+    
+    <div id="wacc-formula-display" class="formula-display">
+        <h3>WACC Formula:</h3>
+        <pre id="wacc-formula">No calculation yet.</pre>
+    </div>
+    <div id="dcf-formula-display" class="formula-display">
+        <h3>DCF Formula:</h3>
+        <pre id="dcf-formula">No calculation yet.</pre>
+    </div>
+    <div class="dcf-container">
+        <h1 class="dcf-title">Interactive Discounted Cash Flow (DCF) Model</h1>
+        <div class="dcf-grid">
+	    <div class="dcf-input-group">
+    		<label for="years-before-terminal">Years Before Terminal:</label>
+    		<input type="number" id="years-before-terminal" class="dcf-input" value="5">
+	    </div>
+            <div class="dcf-input-group">
+                <label for="revenue">Revenue Growth Rate (%):</label>
+                <input type="number" id="revenue" class="dcf-input" value="10">
+            </div>
+            <div class="dcf-input-group">
+                <label for="discount-rate">Discount Rate (%):</label>
+                <input type="number" id="discount-rate" class="dcf-input" value="8">
+            </div>
+            <div class="dcf-input-group">
+                <label for="operating-margin">Operating Margin (%):</label>
+                <input type="number" id="operating-margin" class="dcf-input" value="20">
+            </div>
+            <div class="dcf-input-group">
+                <label for="wacc">WACC (%):</label>
+                <input type="number" id="wacc" class="dcf-input" value="10">
+            </div>
+            <div class="dcf-input-group">
+                <label for="initial-revenue">Initial Revenue ($M):</label>
+                <input type="number" id="initial-revenue" class="dcf-input" value="100">
+            </div>
+            <div class="dcf-input-group">
+                <label for="terminal-growth">Terminal Growth Rate (%):</label>
+                <input type="number" id="terminal-growth" class="dcf-input" value="2">
+            </div>
         </div>
+        <h2 class="dcf-title">WACC Calculator</h2>
+        <div class="dcf-grid">
+            <div class="dcf-input-group">
+                <label for="equity">Equity Value ($M):</label>
+                <input type="number" id="equity" class="dcf-input" value="100">
+            </div>
+            <div class="dcf-input-group">
+                <label for="debt">Debt Value ($M):</label>
+                <input type="number" id="debt" class="dcf-input" value="50">
+            </div>
+            <div class="dcf-input-group">
+                <label for="cost-equity">Cost of Equity (%):</label>
+                <input type="number" id="cost-equity" class="dcf-input" value="8">
+            </div>
+            <div class="dcf-input-group">
+                <label for="cost-debt">Cost of Debt (%):</label>
+                <input type="number" id="cost-debt" class="dcf-input" value="5">
+            </div>
+            <div class="dcf-input-group">
+                <label for="tax-rate">Tax Rate (%):</label>
+                <input type="number" id="tax-rate" class="dcf-input" value="30">
+            </div>
+        </div>
+        <button id="calculate-wacc" class="dcf-button">Calculate WACC</button>
+        <button id="calculate" class="dcf-button">Calculate DCF</button>
+
+        <div class="dcf-results">
+            <h3 class="dcf-results-title">Present Value of Cash Flows:</h3>
+            <p class="dcf-results-value" id="pv-cashflows">$0.00</p>
+        </div>
+        
+	<button id="show-wacc-formula" class="dcf-button">Show WACC Formula</button>
+	<button id="show-dcf-formula" class="dcf-button">Show DCF Formula</button>
+    </div>
+
+   <div class="dcf-answer-container">
+        <h1>Interview Questions for DCF Model</h1>
+
+        <div class="question">
+            <h3>Basic Question 1: What is the purpose of a Discounted Cash Flow (DCF) model?</h3>
+            <button onclick="toggleAnswer('answer1')">Show Answer</button>
+            <div class="answer" id="answer1">
+                <p>A DCF model estimates the value of an investment based on its expected future cash flows, discounted back to their present value. It helps assess whether an investment is undervalued or overvalued.</p>
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>Basic Question 2: What is the significance of the discount rate in a DCF model?</h3>
+            <button onclick="toggleAnswer('answer2')">Show Answer</button>
+            <div class="answer" id="answer2">
+                <p>The discount rate reflects the risk and time value of money. It adjusts future cash flows to their present value and is typically the Weighted Average Cost of Capital (WACC) in most DCF calculations.</p>
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>Medium Question 1: How does changing the terminal growth rate affect the terminal value and overall present value?</h3>
+            <button onclick="toggleAnswer('answer3')">Show Answer</button>
+            <div class="answer" id="answer3">
+                <p>An increase in the terminal growth rate raises the terminal value, as it assumes higher perpetual growth. This, in turn, increases the overall present value. Conversely, lowering the terminal growth rate reduces the terminal value and present value.</p>
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>Medium Question 2: What happens if the WACC is higher than the terminal growth rate in the model?</h3>
+            <button onclick="toggleAnswer('answer4')">Show Answer</button>
+            <div class="answer" id="answer4">
+                <p>If the WACC is higher than the terminal growth rate, the terminal value remains positive and realistic. However, if the WACC is close to or less than the terminal growth rate, the model may produce an unrealistically high or infinite terminal value.</p>
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>Advanced Question 1: Explain how you would validate the assumptions in the DCF model to ensure reliability.</h3>
+            <button onclick="toggleAnswer('answer5')">Show Answer</button>
+            <div class="answer" id="answer5">
+                <p>
+                    - Validate revenue growth rates and operating margins using historical data and industry benchmarks.<br>
+                    - Cross-check the WACC calculation against market data for equity and debt costs.<br>
+                    - Stress-test the model by varying key inputs (e.g., growth rates, WACC) and evaluating the impact on present value.<br>
+                    - Ensure the terminal growth rate aligns with the long-term expected growth of the economy or industry.
+                </p>
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>Advanced Question 2: What are the limitations of the DCF model, and how would you address them in decision-making?</h3>
+            <button onclick="toggleAnswer('answer6')">Show Answer</button>
+            <div class="answer" id="answer6">
+                <p>
+                    Limitations include sensitivity to assumptions (e.g., discount rate, growth rate), inability to account for qualitative factors, and potential over-reliance on future projections.<br>
+                    To address these, perform scenario analysis, incorporate additional valuation methods (e.g., comparable company analysis), and include qualitative factors in decision-making.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="dcf-footer">
+        <p>&copy; 2024 John Urwin. All Rights Reserved.</p>
+    </div>
+       </div>
 
         <div id="interview-question-4" style="display: none;">
-            <h2>Interview Question 4</h2>
-            <p>This is a placeholder for Interview Question 4.</p>
-        </div>
+
+    <p>
+      You have 8 balls. One is either heavier or lighter. Use the balance scale 
+      (up to 3 times) to find the odd ball and determine if it is heavier or lighter.
+    </p>
+    <div id="balls" class="ball-container">
+      <div class="ball" data-ball="1">1</div>
+      <div class="ball" data-ball="2">2</div>
+      <div class="ball" data-ball="3">3</div>
+      <div class="ball" data-ball="4">4</div>
+      <div class="ball" data-ball="5">5</div>
+      <div class="ball" data-ball="6">6</div>
+      <div class="ball" data-ball="7">7</div>
+      <div class="ball" data-ball="8">8</div>
+    </div>
+    <div class="button-container">
+      <button id="add-left">Add to Left Scale</button>
+      <button id="add-right">Add to Right Scale</button>
+    </div>
+    <div class="scale">
+      <div class="scale-side" id="left-scale">Left Scale</div>
+      <div class="scale-side" id="right-scale">Right Scale</div>
+    </div>
+    <button id="submit">Weigh</button>
+    <button id="reset-scale">Reset Scale</button>
+    <button id="reset-history">Reset Weighing History</button>
+    <div id="answer-container">
+      <label for="odd-ball">Select Odd Ball:</label>
+      <select id="odd-ball">
+        <option value="" disabled selected>Choose a ball</option>
+        <option value="1">Ball 1</option>
+        <option value="2">Ball 2</option>
+        <option value="3">Ball 3</option>
+        <option value="4">Ball 4</option>
+        <option value="5">Ball 5</option>
+        <option value="6">Ball 6</option>
+        <option value="7">Ball 7</option>
+        <option value="8">Ball 8</option>
+      </select>
+      <label for="weight">Is it:</label>
+      <select id="weight">
+        <option value="" disabled selected>Choose weight</option>
+        <option value="heavy">Heavy</option>
+        <option value="light">Light</option>
+      </select>
+      <button id="submit-answer">Submit Answer</button>
+    </div>
+    <p id="feedback"></p>
+    <div id="history"><strong>Weighing History:</strong><br>No weighings yet.</div>
+    <button id="hint-button">Do you want a Hint?</button>
+    <div id="hint" style="display: none; margin-top: 20px; text-align: left;">
+      <strong>Hint:</strong>
+      <p>
+        Use this step-by-step strategy to solve the puzzle in 3 weighings:<br>
+        1. Divide the balls into three groups: 3, 3, and 2.<br>
+        2. Compare Group A (3 balls) vs. Group B (3 balls):<br>
+           - If balanced, the odd ball is in Group C.<br>
+           - If tipped, the odd ball is in the heavier or lighter group.<br>
+        3. Narrow down to 3 or 2 balls based on the result of the first weighing.<br>
+        4. Use the second weighing to identify 1 odd ball.<br>
+        5. Use the third weighing to confirm the odd ball and its weight.<br>
+      </p>
+    </div>
+  </div>
 
         <div id="interview-question-5" style="display: none;">
-            <h2>Interview Question 5</h2>
-            <p>This is a placeholder for Interview Question 5.</p>
+    <header>
+      <h2>Cross-Validation Assessment</h2>
+      <p>Test your understanding of cross-validation in machine learning.</p>
+    </header>
+    <section id="intro">
+      <p>
+        Cross-validation is a statistical method used to evaluate machine learning models 
+        by splitting the data into training and testing sets multiple times. Common types 
+        include K-Fold, Leave-One-Out, and stratified cross-validation.
+      </p>
+    </section>
+    <section id="questions">
+      <h3>Theory Questions</h3>
+      <form id="quiz" aria-label="Cross-validation quiz">
+        <div class="question">
+          <p>1. What is the main purpose of cross-validation?</p>
+          <label><input type="radio" name="q1" value="a"> To test the model only once</label><br>
+          <label><input type="radio" name="q1" value="b"> To split the dataset multiple times and reduce overfitting</label><br>
+          <label><input type="radio" name="q1" value="c"> To improve data collection</label>
         </div>
+        <div class="question">
+          <p>2. What is the advantage of stratified K-Fold over regular K-Fold?</p>
+          <label><input type="radio" name="q2" value="a"> Faster computation</label><br>
+          <label><input type="radio" name="q2" value="b"> Preserves class distribution</label><br>
+          <label><input type="radio" name="q2" value="c"> Reduces training data size</label>
+        </div>
+        <button type="button" onclick="gradeQuiz()">Submit Answers</button>
+      </form>
+      <div id="results" aria-live="polite"></div>
+    </section>
+  <div class="container">
+    <h1>Cross-Validation Animation</h1>
+    <p>Select the number of folds to visualize cross-validation!</p>
+
+    <div class="controls">
+      <label for="fold-count">Choose number of folds:</label>
+      <select id="fold-count">
+        <option value="3">3 Folds</option>
+        <option value="4">4 Folds</option>
+        <option value="5">5 Folds</option>
+        <option value="10">10 Folds</option>
+      </select>
+      <button onclick="animateFolds()">Run Animation</button>
+    </div>
+
+    <div class="timeline">
+      <div id="progress-bar" class="progress-bar"></div>
+    </div>
+    <div id="animation-area" class="folds"></div>
+  </div>
+
+  <div class="explanation">
+    <h2>What is Cross-Validation?</h2>
+    <p>
+      Cross-validation is a method to evaluate the performance of machine learning models by 
+      splitting the data into <span class="highlight">training</span> and <span class="highlight">testing</span> sets multiple times. 
+      This ensures that the model is trained and tested on different portions of the data, reducing 
+      the risk of overfitting and giving a better estimate of model performance.
+    </p>
+    <p>
+      In <span class="highlight">K-Fold Cross-Validation</span>, the data is divided into <span class="highlight">K</span> subsets (folds). 
+      Each fold is used as a testing set once, while the remaining folds are used as the training set.
+      The process is repeated <span class="highlight">K</span> times, and the final performance is averaged across all iterations.
+    </p>
+    <p>
+      Use this visualization to understand how the training and testing sets are rotated through the folds!
+    </p>
+  </div>
+
+  </div>
 
         <div id="interview-question-6" style="display: none;">
-            <h2>Interview Question 6</h2>
-            <p>This is a placeholder for Interview Question 6.</p>
+<body>
+    <header>
+        <h1>A/B Test Significance Calculator</h1>
+    </header>
+
+    <main>
+        <form id="abTestForm">
+            <div class="input-group">
+                <label for="groupA">Group A - Conversions:</label>
+                <input type="number" id="groupA" name="groupA" min="0" required>
+            </div>
+            <div class="input-group">
+                <label for="visitorsA">Group A - Total Visitors:</label>
+                <input type="number" id="visitorsA" name="visitorsA" min="1" required>
+            </div>
+            <div class="input-group">
+                <label for="groupB">Group B - Conversions:</label>
+                <input type="number" id="groupB" name="groupB" min="0" required>
+            </div>
+            <div class="input-group">
+                <label for="visitorsB">Group B - Total Visitors:</label>
+                <input type="number" id="visitorsB" name="visitorsB" min="1" required>
+            </div>
+            <button type="submit">Calculate</button>
+        </form>
+
+        <section id="results" class="hidden">
+            <h2>Results</h2>
+            <p id="summary"></p>
+            <p id="pValue"></p>
+            <p id="significance"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 John Urwin A/B Test Significance App</p>
+    </footer>
         </div>
 
         <div id="interview-question-7" style="display: none;">
-            <h2>Interview Question 7</h2>
-            <p>This is a placeholder for Interview Question 7.</p>
+
+    <div class="app-container">
+        <header>
+            <h1>Data Science Interview Questions App</h1>
+            <p>Test your knowledge and earn badges!</p>
+            <div id="user-section">
+                <span id="user-greeting">Welcome!</span>
+                <button id="logoutBtn" class="btn-logout" style="display: none;">Logout</button>
+            </div>
+        </header>
+        <main>
+            <!-- Login Section -->
+            <section id="login-section">
+                <h2>Login</h2>
+		<p> This app uses local storage of your login name. The website will store your login name locally on your device so that it saves your progress. </p>
+                <input type="text" id="usernameInput" placeholder="Enter your username" />
+                <button id="loginBtn" class="btn-login">Login</button>
+            </section>
+
+            <!-- Challenge Section -->
+            <section id="challenge-section" style="display: none;">
+                <h2>Question</h2>
+                <p id="challenge-question">Loading question...</p>
+                <div id="choices-container" class="choices-container"></div>
+            </section>
+
+            <!-- Badges Section -->
+            <section id="badges-section" style="display: none;">
+                <h2>Your Badges</h2>
+                <div id="badges" class="badges-container">
+                    No badges earned yet.
+                </div>
+            </section>
+
+            <!-- Progress Section -->
+            <section id="progress-section" style="display: none;">
+                <h2>Your Progress</h2>
+                <div class="progress-bar">
+                    <div class="progress" id="progress"></div>
+                </div>
+                <p>You have answered <span id="progressCount">0</span> questions correctly!</p>
+            </section>
+        </main>
+        <footer>
+            <p>Keep testing your knowledge and improving! 🚀</p>
+        </footer>
+    </div>
+
         </div>
 
         <div id="interview-question-8" style="display: none;">
-            <h2>Interview Question 8</h2>
-            <p>This is a placeholder for Interview Question 8.</p>
+    <div class="time-series-container">
+        <h1>Interactive Outlier Detection</h1>
+        <p id="instruction">Click "Generate Chart" to begin.</p>
+        <p id="instruction">Select the outliers on the chart by clicking them.</p>
+        <p id="instruction">Click the Submit button after you click all outliers.</p>
+        <!-- Generate Chart Button -->
+        <button id="generateChartButton">Generate Chart</button>
+        <!-- Canvas -->
+        <div class="chart-container">
+            <canvas id="timeSeriesCanvas"></canvas>
+        </div>
+        <!-- Submit Section -->
+        <button id="submitAnswerButton" style="display: none;">Submit Your Answer</button>
+        <div id="feedbackMessage"></div>
+    </div>
         </div>
 
         <div id="interview-question-9" style="display: none;">
-            <h2>Interview Question 9</h2>
-            <p>This is a placeholder for Interview Question 9.</p>
+    <div class="fsq-container">
+        <h1 class="fsq-title">Feature Importance Across Models</h1>
+        <p class="fsq-instruction" id="fsq-instruction">
+            Click "Generate Chart" to display feature importance for three models.
+        </p>
+
+        <!-- Generate Chart Button -->
+        <button class="fsq-button" id="fsq-generateChartButton">Generate Chart</button>
+
+        <!-- Chart Canvas -->
+        <div class="fsq-chart-container">
+            <canvas id="fsq-featureImportanceChart"></canvas>
+        </div>
+
+        <!-- Feature Selection -->
+        <p class="fsq-instruction">
+            Select the top 3 features you think are most important for each model:
+        </p>
+        <div id="fsq-selectionContainer" class="fsq-selection-container"></div>
+
+        <!-- Submit Button -->
+        <button class="fsq-button" id="fsq-submitAnswerButton" style="display: none;">
+            Submit Your Answer
+        </button>
+
+        <!-- Feedback Section -->
+        <div id="fsq-feedbackMessage" class="fsq-feedback"></div>
+    </div>
         </div>
 
         <div id="interview-question-10" style="display: none;">
-            <h2>Interview Question 10</h2>
-            <p>This is a placeholder for Interview Question 10.</p>
+    <div class="clustering-container">
+        <h1 class="clustering-title">Interactive Clustering Outlier Detection</h1>
+        <p class="clustering-instructions" id="clustering-instructions">
+            Click "Generate Data" to display a scatter plot of random data points.
+        </p>
+
+        <!-- Generate Button -->
+        <button id="clustering-generateButton" class="clustering-button">Generate Data</button>
+
+        <!-- Algorithm Buttons -->
+        <div id="clustering-algorithmButtons" style="display: none;">
+            <p class="clustering-instructions">Choose a clustering algorithm:</p>
+            <button class="clustering-button" id="clustering-kmeansButton">Run K-Means</button>
+            <button class="clustering-button" id="clustering-dbscanButton">Run DBSCAN</button>
+        </div>
+
+        <!-- Explanation Section -->
+        <p id="clustering-explanation" class="clustering-explanation"></p>
+
+        <!-- Scatter Plot -->
+        <div class="clustering-chart-container">
+            <canvas id="clustering-scatterPlot"></canvas>
+        </div>
+
+        <!-- Submit Button -->
+        <button id="clustering-submitButton" class="clustering-button" style="display: none;">
+            Submit Outliers
+        </button>
+	<p>If you find 10 outliers, your answer is correct. There usually is less than 20 outliers, so the submission results are wrong</p>
+
+        <!-- Feedback Section -->
+        <div id="clustering-feedback" class="clustering-feedback"></div>
+    </div>
+
+<!-- Questions and Answers Section -->
+<div class="clustering-qa-container">
+    <h2 class="clustering-qa-title">Questions and Answers about K-Means and DBSCAN</h2>
+
+    <!-- Easy Questions -->
+    <h3>Basic Question 1: What is the main difference between K-Means and DBSCAN?</h3>
+    <button onclick="toggleAnswer('answer9')">Show Answer</button>
+    <div class="answer" id="answer9">
+        <p>K-Means assigns points to a fixed number of clusters based on distance to centroids, while DBSCAN groups points based on density and can identify noise (outliers).</p>
+    </div>
+
+    <h3>Basic Question 2: What happens if K-Means is run on data with non-spherical clusters?</h3>
+    <button onclick="toggleAnswer('answer10')">Show Answer</button>
+    <div class="answer" id="answer10">
+        <p>K-Means may fail to group points correctly because it assumes clusters are spherical and evenly sized.</p>
+    </div>
+
+    <!-- Medium Questions -->
+    <h3>Intermediate Question 1: How does DBSCAN decide which points are noise?</h3>
+    <button onclick="toggleAnswer('answer11')">Show Answer</button>
+    <div class="answer" id="answer11">
+        <p>DBSCAN identifies points with fewer than a specified number of neighbors (MinPts) within a given radius (Epsilon) as noise.</p>
+    </div>
+
+    <h3>Intermediate Question 2: What is a key challenge when choosing the number of clusters for K-Means?</h3>
+    <button onclick="toggleAnswer('answer12')">Show Answer</button>
+    <div class="answer" id="answer12">
+        <p>The number of clusters (K) must be specified beforehand. Choosing the wrong K can lead to poorly formed clusters.</p>
+    </div>
+
+    <!-- Hard Questions -->
+    <h3>Advanced Question 1: Can DBSCAN produce overlapping clusters like K-Means?</h3>
+    <button onclick="toggleAnswer('answer13')">Show Answer</button>
+    <div class="answer" id="answer13">
+        <p>No, DBSCAN does not produce overlapping clusters. Each point belongs to one cluster or is labeled as noise.</p>
+    </div>
+
+    <h3>Advanced Question 2: What happens if DBSCAN's Epsilon (radius) value is set too small or too large?</h3>
+    <button onclick="toggleAnswer('answer14')">Show Answer</button>
+    <div class="answer" id="answer14">
+        <p>If Epsilon is too small, many points will be labeled as noise. If too large, clusters may merge, losing meaningful separation.</p>
+    </div>
+
+    <!-- Out-of-the-Box Questions -->
+    <h3>Out-of-the-Box Question 1: How can K-Means and DBSCAN be used together to detect meaningful clusters and noise?</h3>
+    <button onclick="toggleAnswer('answer7')">Show Answer</button>
+    <div class="answer" id="answer7">
+        <p>K-Means can first identify the general structure of clusters, and DBSCAN can be applied afterward to detect dense regions and label remaining points as noise.</p>
+    </div>
+
+    <h3>Out-of-the-Box Question 2: What could you learn by applying DBSCAN to the output of K-Means clustering?</h3>
+    <button onclick="toggleAnswer('answer8')">Show Answer</button>
+    <div class="answer" id="answer8">
+        <p>Applying DBSCAN on K-Means results can highlight regions where clusters overlap or detect points at the cluster boundaries as noise.</p>
+    </div>
+</div>
+</div>
+
         </div>
     </main>
     <audio id="water-splash" src="water-splash.mp3"></audio>
     <script src="bucket_animation.js"></script>
     <script src="interview_question_2_regression.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="interview_question_3_dcf.js"></script>
+    <script src="interview_question_4_brain_teaser.js"></script>
+    <script src="interview_question_5_cross_validation.js"></script>
+    <script src="interview_question_6_statistical_significance.js"></script>
+    <script src="interview_question_7_data_science.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="interview_question_8_time_series.js"></script>
+    <script src="interview_question_9_feature_importance.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hammerjs"></script>
+    <script src="interview_question_10_clustering.js"></script>
 
     <script>
         function toggleInterviewQuestion(questionNumber) {
@@ -220,7 +722,31 @@
             }   else if (questionNumber === 2) {
                 problemTitle.textContent = 'Univariate and Multivariate Regression';
                 problemDescription.textContent = 'Use the interactive regressions to help answer the univariate and multivariate regression questions.';
-	    }   else {
+	    }   else if (questionNumber === 3) {
+                problemTitle.textContent = 'Discounted Cash Flow Calculator';
+                problemDescription.textContent = 'Use the interactive discounted cash flow calculator to help answer the questions below. After thinking about it on your own, click the button to reveal the answer.';
+	    }   else if (questionNumber === 4) {
+                problemTitle.textContent = 'Odd Ball Puzzle';
+                problemDescription.textContent = 'Use the Interactive Scale to determine which of the 8 balls is heavier or lighter than the others.  You can only use the scale three times to answer the problem. Can you think of a way to use it to guarantee that you find the correct answer?';
+	    } 	else if (questionNumber === 5) {
+                problemTitle.textContent = 'Cross Validation';
+                problemDescription.textContent = 'Cross Validation Questions with Animation';
+	    }   else if (questionNumber === 6) {
+                problemTitle.textContent = 'A/B Test Calculator';
+                problemDescription.textContent = 'How does an A/B Test work? Please explain';
+	    } else if (questionNumber === 7) {
+                problemTitle.textContent = 'Data Science Question App';
+                problemDescription.textContent = 'Can you answer all of these data science questions correctly?';
+	    } else if (questionNumber === 8) {
+                problemTitle.textContent = 'Outlier Detection';
+                problemDescription.textContent = 'Can you identify all of the outliers in a Time Series?';
+	    } else if (questionNumber === 9) {
+                problemTitle.textContent = 'Feature Importance';
+                problemDescription.textContent = 'Select the top 3 most important features for each model.';
+	    } else if (questionNumber === 10) {
+                problemTitle.textContent = 'Clustering';
+                problemDescription.textContent = 'Select the top 3 most important features for each model.';
+	    } else {
                 problemTitle.textContent = `Interview Question ${questionNumber}`;
                 problemDescription.textContent = `This is the description for Interview Question ${questionNumber}.`;
             }

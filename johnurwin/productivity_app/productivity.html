@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Epic Productivity Challenge</title>
+    <link rel="stylesheet" href="productivity.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>2-Minute Productivity Challenge</h1>
+            <p>Your mini missions for a better you!</p>
+            <div id="user-section">
+                <span id="user-greeting">Welcome, Guest!</span>
+                <button id="logoutBtn" class="btn-logout" style="display: none;">Logout</button>
+            </div>
+        </header>
+        <main>
+            <section id="login-section">
+                <h2>Login</h2>
+<p> This app uses local storage of your login name. The website will store your login name locally on your device. It is part of the Web Storage API and provides a simple way to save key-value pairs in a browser. </p>
+                <input type="text" id="usernameInput" placeholder="Enter your username" />
+                <button id="loginBtn" class="btn-login">Login</button>
+            </section>
+            <section id="challenge-section" style="display: none;">
+                <p id="challenge">Loading challenge...</p>
+                <button class="btn-complete" id="completeChallengeBtn">Complete Challenge</button>
+            </section>
+            <section id="badges-section" style="display: none;">
+                <h2>Your Badges</h2>
+                <div id="badges" class="badges-container">
+                    No badges earned yet.                
+		</div>
+<div id="streak-section" style="display: none;">
+    <h2>Current Streak</h2>
+    <p>You have a streak of <span id="streakCount">0</span> days!</p>
+</div>
+            </section>
+
+
+
+<section id="progress-section" style="display: none;">
+    <h2>Your Progress</h2>
+    <div class="progress-bar">
+        <div class="progress" id="progress"></div>
+    </div>
+    <p><span id="progressCount">0</span> challenges completed!</p>
+
+    <div id="congrats-message" style="display: none;">
+        <h3>🎉 Congratulations! 🎉</h3>
+        <p>You've completed 10 challenges! Keep up the great work!</p>
+        <div class="progress-bar">
+            <div class="progress" id="secondProgress"></div>
+        </div>
+        <p>Your next 10 challenges await!</p>
+    </div>
+</section>
+
+        </main>
+        <footer>
+            <p>Keep challenging yourself, one task at a time! 🚀</p>
+        </footer>
+    </div>
+    <script src="productivity.js"></script>
+</body>
+</html>

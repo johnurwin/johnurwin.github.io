@@ -172,7 +172,33 @@
         border: 2px solid #9ca3af;
     }
 
+.course-indicators {
+    display: flex;
+    gap: 5px;
+}
 
+.legend-shape {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+}
+
+.legend-shape.square {
+    border-radius: 0;
+}
+
+.legend-shape.triangle {
+    width: 0;
+    height: 0;
+    border-left: 7.5px solid transparent;
+    border-right: 7.5px solid transparent;
+    border-bottom: 15px solid #1da1f2;
+}
+
+.timeline-item {
+    margin-bottom: 20px;
+}
     </style>
 </head>
 <body>
@@ -421,33 +447,35 @@
 
     <section id="online-courses" class="timeline">
         <h2 class="text-3xl glow text-center">Completed Online Courses with Links</h2>
+	<h4 text-center">This is a subset of the total Datacamp courses I've completed. To see a complete list, see my datacamp portfolio page: </h4>
+	<div class="timeline-point"> <a href="https://www.datacamp.com/portfolio/jurwin15" class="mt-8 glow-button" target="_blank">John Urwin's Datacamp Portfolio</a> </div>
 
-        <div class="legend">
-            <div class="legend-item">
-                <span class="legend-shape circle" style="background-color: #2563eb;"></span> Python
-            </div>
-            <div class="legend-item">
-                <span class="legend-shape circle" style="background-color: #10b981;"></span> R
-            </div>
-            <div class="legend-item">
-                <span class="legend-shape circle" style="background-color: #f97316;"></span> SQL
-            </div>
-            <div class="legend-item">
-                <span class="legend-shape circle" style="background-color: #9333ea;"></span> SAS
-            </div>
-            <div class="legend-item">
-                <span class="legend-shape circle" style="background-color: #9ca3af;"></span> Other
-            </div>
-            <div class="legend-item">
-                <span class="legend-shape circle" style="background-color: #ffffff;"></span> Data Science
-            </div>
-            <div class="legend-item">
-                <span class="legend-shape square" style="background-color: #ffffff;"></span> Data Engineering
-            </div>
-            <div class="legend-item">
-                <span class="legend-shape octagon" style="background-color: #ffffff;"></span> Software Engineering
-            </div>
+    <div class="legend">
+        <div class="legend-item">
+            <span class="legend-shape circle" style="background-color: #2563eb;"></span> Python
         </div>
+        <div class="legend-item">
+            <span class="legend-shape circle" style="background-color: #10b981;"></span> R
+        </div>
+        <div class="legend-item">
+            <span class="legend-shape circle" style="background-color: #f97316;"></span> SQL
+        </div>
+        <div class="legend-item">
+            <span class="legend-shape circle" style="background-color: #9333ea;"></span> SAS
+        </div>
+        <div class="legend-item">
+            <span class="legend-shape circle" style="background-color: #9ca3af;"></span> Other
+        </div>
+        <div class="legend-item">
+            <span class="legend-shape circle" style="background-color: #ffffff;"></span> Data Science
+        </div>
+        <div class="legend-item">
+            <span class="legend-shape square" style="background-color: #ffffff;"></span> Data Engineering
+        </div>
+        <div class="legend-item">
+            <span class="legend-shape octagon" style="background-color: #ffffff;"></span> Software Engineering
+        </div>
+    </div>
 
 <div class="timeline">
 

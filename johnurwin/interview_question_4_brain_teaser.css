@@ -1,0 +1,63 @@
+        .ball-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .ball {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            margin: 5px;
+            background: #ccc;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.5s, margin 0.5s;
+        }
+        .selected {
+            background: #f0a500;
+        }
+        .scale {
+            margin: 20px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+        .scale-side {
+            width: 40%;
+            background: #e0e0e0;
+            padding: 10px;
+            border-radius: 10px;
+            min-height: 120px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
+        .button-container {
+            margin: 10px 0;
+        }
+        .button-container button {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #history {
+            margin-top: 20px;
+            text-align: left;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            background: #f9f9f9;
+        }
+        #feedback {
+            margin-top: 20px;
+        }
+        #answer-container {
+            margin: 20px 0;
+            text-align: center;
+        }

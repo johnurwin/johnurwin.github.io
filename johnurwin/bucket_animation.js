@@ -67,11 +67,11 @@ function checkSolution() {
 
 function showCorrectPopup() {
     const popup = document.getElementById('correct-popup');
-    popup.style.display = 'block';
+    popup.style.display = 'table-column-group';
 
     setTimeout(() => {
         popup.style.display = 'none';
-    }, 2000);
+    }, 10000);
 }
 
 function playWaterSplash() {
